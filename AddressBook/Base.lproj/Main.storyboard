@@ -19,33 +19,60 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="bHs-tY-Whe">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lTg-F3-9bt">
-                                <rect key="frame" x="20" y="64" width="67" height="33.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6Cc-FZ-Mkw">
+                                <rect key="frame" x="50" y="346.5" width="314" height="203.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHe-8b-i72">
-                                        <rect key="frame" x="0.0" y="0.0" width="67" height="33.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SKu-BA-9V0" customClass="LoginField" customModule="AddressBook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="38.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="MailIcon"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPa-t5-00P" customClass="LoginField" customModule="AddressBook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="58.5" width="314" height="37"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="PassIcon"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zfG-25-9Mi" customClass="LoginButton" customModule="AddressBook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="115.5" width="314" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Register">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVs-vh-0rx" customClass="LoginButton" customModule="AddressBook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="167.5" width="314" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                             </stackView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="asdasd" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SKu-BA-9V0" customClass="LoginField" customModule="AddressBook" customModuleProvider="target">
-                                <rect key="frame" x="159" y="257" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHe-8b-i72">
+                                <rect key="frame" x="20" y="64" width="76.5" height="38.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="bHs-tY-Whe" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="PSd-iG-mot"/>
-                            <constraint firstItem="lTg-F3-9bt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Tpi-8q-Vg0"/>
-                            <constraint firstItem="lTg-F3-9bt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="VN6-2m-ybB"/>
-                            <constraint firstItem="bHs-tY-Whe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aCB-gB-3VH"/>
-                            <constraint firstAttribute="bottom" secondItem="bHs-tY-Whe" secondAttribute="bottom" id="pS3-yJ-OAh"/>
-                            <constraint firstItem="bHs-tY-Whe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wF3-jE-GZ3"/>
+                            <constraint firstItem="UHe-8b-i72" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="1t4-CK-7Te"/>
+                            <constraint firstItem="6Cc-FZ-Mkw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="4Km-gk-Dh8"/>
+                            <constraint firstItem="bHs-tY-Whe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LFE-Hl-A7H"/>
+                            <constraint firstAttribute="bottom" secondItem="bHs-tY-Whe" secondAttribute="bottom" id="NJ5-d1-O74"/>
+                            <constraint firstItem="UHe-8b-i72" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="NUc-4E-WtY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6Cc-FZ-Mkw" secondAttribute="trailing" constant="50" id="bbG-25-2R6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bHs-tY-Whe" secondAttribute="trailing" id="cdQ-ed-Yxw"/>
+                            <constraint firstItem="bHs-tY-Whe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dBf-0M-mWb"/>
+                            <constraint firstItem="6Cc-FZ-Mkw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="wXq-5H-r5T"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -54,6 +81,20 @@
             <point key="canvasLocation" x="140.57971014492756" y="117.85714285714285"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="SKu-BA-9V0">
+            <size key="intrinsicContentSize" width="54" height="38.5"/>
+        </designable>
+        <designable name="cPa-t5-00P">
+            <size key="intrinsicContentSize" width="54" height="37"/>
+        </designable>
+        <designable name="vVs-vh-0rx">
+            <size key="intrinsicContentSize" width="49" height="36"/>
+        </designable>
+        <designable name="zfG-25-9Mi">
+            <size key="intrinsicContentSize" width="60" height="32"/>
+        </designable>
+    </designables>
     <resources>
         <image name="LoginBackground" width="412" height="847"/>
         <systemColor name="systemBackgroundColor">

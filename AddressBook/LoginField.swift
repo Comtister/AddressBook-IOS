@@ -7,15 +7,15 @@
 
 import UIKit
 
+@IBDesignable
 class LoginField: UITextField {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+   @IBInspectable var imageName : String!{
+        didSet{
+            setLeftImage(imageName: imageName)
+        }
     }
-    */
+        
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,9 +27,20 @@ class LoginField: UITextField {
         commonInit()
     }
     
-    func commonInit(){
+    private func commonInit(){
+        
         self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.blue])
-       
+        
+    }
+   
+    private func setLeftImage(imageName : String){
+        self.leftViewMode = .always
+        let iconContainer = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        let iconView = UIImageView(frame: CGRect(x: 5, y: 0, width: 20, height: 20))
+        iconView.image = UIImage(named: imageName)
+        iconView.contentMode = .scaleAspectFit
+        iconContainer.addSubview(iconView)
+        self.leftView = iconContainer
     }
 
 }
