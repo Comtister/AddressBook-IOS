@@ -24,10 +24,18 @@ class LoginViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-       
+       checkConnection()
     }
     
-    
+    private func checkConnection(){
+        if NetworkMonitor.shared.isConnected{
+            return
+        }else{
+            let ac = UIAlertController(title: "Error", message: "Network Error", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Close", style: .destructive, handler: nil))
+            self.present(ac, animated: true, completion: nil)
+        }
+    }
     
     @IBAction func goToRegisterVC(_ sender : Any){
         performSegue(withIdentifier: "RegisterSegue", sender: nil)

@@ -240,6 +240,9 @@
                                         <state key="normal" title="Register">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="registerAction:" destination="2ch-2r-jzp" eventType="touchUpInside" id="ArV-ps-y4K"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -257,6 +260,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qHQ-hg-yvg"/>
+                    <connections>
+                        <outlet property="mailTextInput" destination="vTA-28-wUy" id="ohH-hI-2s2"/>
+                        <outlet property="nameTextInput" destination="Znj-bM-kIc" id="Lkf-MS-Emr"/>
+                        <outlet property="passTextInput" destination="Wsy-Gi-Lhn" id="4kL-1W-CUL"/>
+                        <outlet property="passTwoTextInput" destination="ahK-kJ-euT" id="FxT-Jb-auz"/>
+                        <outlet property="registerBtn" destination="9Cj-oZ-Upr" id="Ook-OT-vVn"/>
+                        <outlet property="usernameTextInput" destination="zld-31-1rc" id="3u7-Do-q6E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xu9-dy-vTj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
