@@ -3,31 +3,39 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		520BC66B261DDAFB00B2F623 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520BC66A261DDAFB00B2F623 /* LoginViewController.swift */; };
+		520BC66E261DDB0900B2F623 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520BC66D261DDB0900B2F623 /* RegisterViewController.swift */; };
 		5252F6192614986B0006F746 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252F6182614986B0006F746 /* AppDelegate.swift */; };
 		5252F61B2614986B0006F746 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252F61A2614986B0006F746 /* SceneDelegate.swift */; };
-		5252F61D2614986B0006F746 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252F61C2614986B0006F746 /* ViewController.swift */; };
 		5252F6202614986B0006F746 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5252F61E2614986B0006F746 /* Main.storyboard */; };
 		5252F6222614986B0006F746 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5252F6212614986B0006F746 /* Assets.xcassets */; };
 		5252F6252614986B0006F746 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5252F6232614986B0006F746 /* LaunchScreen.storyboard */; };
 		5252F62E2614AA660006F746 /* LoginField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252F62D2614AA660006F746 /* LoginField.swift */; };
+		525DF7B9261E613200B22E57 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525DF7B8261E613200B22E57 /* NetworkManager.swift */; };
 		52796F4526153CFA009A1875 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52796F4426153CFA009A1875 /* LoginButton.swift */; };
+		BC69A68BEC9FE5297FA6140F /* Pods_AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 612A9761AEE086D3C0246029 /* Pods_AddressBook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E6202F1E5C6A7A419197487 /* Pods-AddressBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AddressBook.debug.xcconfig"; path = "Target Support Files/Pods-AddressBook/Pods-AddressBook.debug.xcconfig"; sourceTree = "<group>"; };
+		33BDC7C50128988A83C30AE7 /* Pods-AddressBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AddressBook.release.xcconfig"; path = "Target Support Files/Pods-AddressBook/Pods-AddressBook.release.xcconfig"; sourceTree = "<group>"; };
+		520BC66A261DDAFB00B2F623 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		520BC66D261DDB0900B2F623 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		5252F6152614986B0006F746 /* AddressBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AddressBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5252F6182614986B0006F746 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5252F61A2614986B0006F746 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5252F61C2614986B0006F746 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5252F61F2614986B0006F746 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5252F6212614986B0006F746 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5252F6242614986B0006F746 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5252F6262614986B0006F746 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5252F62D2614AA660006F746 /* LoginField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginField.swift; sourceTree = "<group>"; };
+		525DF7B8261E613200B22E57 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		52796F4426153CFA009A1875 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		612A9761AEE086D3C0246029 /* Pods_AddressBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AddressBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +43,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC69A68BEC9FE5297FA6140F /* Pods_AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28565289AEC8D539E7797A0B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				612A9761AEE086D3C0246029 /* Pods_AddressBook.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3E24CA26C63E162F4E8B9ED1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1E6202F1E5C6A7A419197487 /* Pods-AddressBook.debug.xcconfig */,
+				33BDC7C50128988A83C30AE7 /* Pods-AddressBook.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		5252F60C2614986B0006F746 = {
 			isa = PBXGroup;
 			children = (
 				5252F6172614986B0006F746 /* AddressBook */,
 				5252F6162614986B0006F746 /* Products */,
+				3E24CA26C63E162F4E8B9ED1 /* Pods */,
+				28565289AEC8D539E7797A0B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,13 +90,15 @@
 			children = (
 				5252F6182614986B0006F746 /* AppDelegate.swift */,
 				5252F61A2614986B0006F746 /* SceneDelegate.swift */,
-				5252F61C2614986B0006F746 /* ViewController.swift */,
 				5252F61E2614986B0006F746 /* Main.storyboard */,
 				5252F6212614986B0006F746 /* Assets.xcassets */,
 				5252F6232614986B0006F746 /* LaunchScreen.storyboard */,
 				5252F6262614986B0006F746 /* Info.plist */,
 				5252F62D2614AA660006F746 /* LoginField.swift */,
 				52796F4426153CFA009A1875 /* LoginButton.swift */,
+				520BC66A261DDAFB00B2F623 /* LoginViewController.swift */,
+				520BC66D261DDB0900B2F623 /* RegisterViewController.swift */,
+				525DF7B8261E613200B22E57 /* NetworkManager.swift */,
 			);
 			path = AddressBook;
 			sourceTree = "<group>";
@@ -80,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5252F6292614986B0006F746 /* Build configuration list for PBXNativeTarget "AddressBook" */;
 			buildPhases = (
+				5ADE0868084A7EC6E046F467 /* [CP] Check Pods Manifest.lock */,
 				5252F6112614986B0006F746 /* Sources */,
 				5252F6122614986B0006F746 /* Frameworks */,
 				5252F6132614986B0006F746 /* Resources */,
+				1D9037D26E46D38778085603 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -138,6 +170,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1D9037D26E46D38778085603 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AddressBook/Pods-AddressBook-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AddressBook/Pods-AddressBook-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AddressBook/Pods-AddressBook-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5ADE0868084A7EC6E046F467 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AddressBook-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5252F6112614986B0006F746 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -145,8 +219,10 @@
 			files = (
 				52796F4526153CFA009A1875 /* LoginButton.swift in Sources */,
 				5252F62E2614AA660006F746 /* LoginField.swift in Sources */,
-				5252F61D2614986B0006F746 /* ViewController.swift in Sources */,
 				5252F6192614986B0006F746 /* AppDelegate.swift in Sources */,
+				525DF7B9261E613200B22E57 /* NetworkManager.swift in Sources */,
+				520BC66E261DDB0900B2F623 /* RegisterViewController.swift in Sources */,
+				520BC66B261DDAFB00B2F623 /* LoginViewController.swift in Sources */,
 				5252F61B2614986B0006F746 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,6 +367,7 @@
 		};
 		5252F62A2614986B0006F746 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E6202F1E5C6A7A419197487 /* Pods-AddressBook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -310,6 +387,7 @@
 		};
 		5252F62B2614986B0006F746 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33BDC7C50128988A83C30AE7 /* Pods-AddressBook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -29,7 +29,7 @@ class LoginField: UITextField {
     
     private func commonInit(){
         
-        self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.blue])
+        //self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.blue])
         
     }
    
