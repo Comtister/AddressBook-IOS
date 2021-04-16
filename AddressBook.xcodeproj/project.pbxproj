@@ -19,6 +19,7 @@
 		525DF7B9261E613200B22E57 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525DF7B8261E613200B22E57 /* NetworkMonitor.swift */; };
 		525FA3A9262867E200DC1CFC /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525FA3A8262867E200DC1CFC /* AuthManager.swift */; };
 		52796F4526153CFA009A1875 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52796F4426153CFA009A1875 /* LoginButton.swift */; };
+		5285CF712629FDFF0034C1BE /* RegisterErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285CF702629FDFF0034C1BE /* RegisterErrors.swift */; };
 		BC69A68BEC9FE5297FA6140F /* Pods_AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 612A9761AEE086D3C0246029 /* Pods_AddressBook.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		525DF7B8261E613200B22E57 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		525FA3A8262867E200DC1CFC /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		52796F4426153CFA009A1875 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		5285CF702629FDFF0034C1BE /* RegisterErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterErrors.swift; sourceTree = "<group>"; };
 		612A9761AEE086D3C0246029 /* Pods_AddressBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AddressBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -128,6 +130,7 @@
 		5252F6172614986B0006F746 /* AddressBook */ = {
 			isa = PBXGroup;
 			children = (
+				5285CF6F2629FDE80034C1BE /* Constants */,
 				521D2CD4261F56000019C258 /* Storyboards */,
 				521D2CD3261F55EA0019C258 /* Model */,
 				521D2CD2261F55D90019C258 /* Controller */,
@@ -139,6 +142,14 @@
 				5252F6262614986B0006F746 /* Info.plist */,
 			);
 			path = AddressBook;
+			sourceTree = "<group>";
+		};
+		5285CF6F2629FDE80034C1BE /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				5285CF702629FDFF0034C1BE /* RegisterErrors.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +275,7 @@
 				520BC66E261DDB0900B2F623 /* RegisterViewController.swift in Sources */,
 				520BC66B261DDAFB00B2F623 /* LoginViewController.swift in Sources */,
 				5252F61B2614986B0006F746 /* SceneDelegate.swift in Sources */,
+				5285CF712629FDFF0034C1BE /* RegisterErrors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

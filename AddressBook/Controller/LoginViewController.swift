@@ -15,16 +15,26 @@ class LoginViewController: UIViewController {
     @IBOutlet var loginBtn : LoginButton!
     @IBOutlet var registerBtn : LoginButton!
     
+    let progressIndicator : UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
     
     override func viewDidLoad() {
         super.viewDidLoad()
             
-       
+        setIndicator()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
        checkConnection()
+    }
+    
+    
+    private func setIndicator(){
+        self.view.addSubview(progressIndicator)
+        progressIndicator.color = UIColor(named: "PrimaryColor")
+        progressIndicator.translatesAutoresizingMaskIntoConstraints = false
+        progressIndicator.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor).isActive = true
+        progressIndicator.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor).isActive = true
     }
     
     private func checkConnection(){
@@ -41,8 +51,32 @@ class LoginViewController: UIViewController {
         performSegue(withIdentifier: "RegisterSegue", sender: nil)
     }
     
-    @IBAction func goToMainVC(_ sender : Any){
-        performSegue(withIdentifier: "MainSegue", sender: nil)
+    @IBAction func loginAction(_ sender : UIButton){
+        //Control Statements
+        guard mailTextInput.text != "" else {
+            showError(error: RegisterErrors.emptyFields)
+            return
+        }
+        guard passTextInput.text != "" else {
+            showError(error: RegisterErrors.emptyFields)
+            return
+        }
+        progressIndicator.startAnimating()
+        AuthManager.loginAccount(email: mailTextInput.text!, password: passTextInput.text!) { [weak self] (resultData, error) in
+            self?.progressIndicator.stopAnimating()
+            if let error = error{
+                self?.showError(error: error)
+                return
+            }
+            self?.performSegue(withIdentifier: "MainSegue", sender: nil)
+        }
+        
+    }
+    
+    private func showError(error : Error){
+        let ac = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Close", style: .destructive, handler: nil))
+        self.present(ac, animated: true, completion: nil)
     }
 
 }

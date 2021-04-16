@@ -10,12 +10,6 @@ import Firebase
 
 class AuthManager {
     
-    enum AuthErrors : String, Error{
-        case databaseError = "Database Error"
-        case userAlreadyExısts = "User already exısts"
-       
-    }
-    
     private static let db = Firestore.firestore()
     
     
@@ -23,11 +17,11 @@ class AuthManager {
         
         db.collection("users").whereField("username", isEqualTo: username).getDocuments { (snapshots, error) in
             if let error = error{
-                completion(AuthErrors.databaseError)
+                completion(RegisterErrors.databaseError)
                 return
             }
             if (snapshots?.documents.count)! > 0{
-                completion(AuthErrors.userAlreadyExısts)
+                completion(RegisterErrors.userAlreadyExists)
                 return
             }
             registerAction(mail: mail, username: username, fullname: fullName, password: password) { (error) in
@@ -41,6 +35,18 @@ class AuthManager {
             
         }
         
+        
+    }
+    
+    static func loginAccount(email : String , password : String , completion : @escaping (AuthDataResult?,Error?) -> Void){
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (resultData, error) in
+            if let error = error{
+                completion(nil,error)
+                return
+            }
+            completion(resultData,nil)
+        }
         
     }
     

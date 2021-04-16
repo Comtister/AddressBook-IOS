@@ -9,14 +9,6 @@ import UIKit
 
 class RegisterViewController: UIViewController {
 
-    enum registerProblems : String {
-        case emptyFields = "Fill in all the fields"
-        case incorrectPasswords = "Passwords don't match"
-        case invalidPasswords = "password must contain at least 6 characters"
-        case auth = "Was the problem..."
-        case connectionProblem = "No internet connection"
-    }
-    
     @IBOutlet var usernameTextInput : LoginField!
     @IBOutlet var mailTextInput : LoginField!
     @IBOutlet var nameTextInput : LoginField!
@@ -32,8 +24,6 @@ class RegisterViewController: UIViewController {
         
         setIndicator()
  
-        
-        
     }
     
     private func setIndicator(){
@@ -47,42 +37,42 @@ class RegisterViewController: UIViewController {
     @IBAction func registerAction(_ sender : Any){
         //Control Statements
         guard NetworkMonitor.shared.isConnected else{
-            showTextInputError(.connectionProblem)
+            showTextInputError(RegisterErrors.connectionProblem)
             return
         }
         guard mailTextInput.text != "" else {
-            showTextInputError(.emptyFields)
+            showTextInputError(RegisterErrors.emptyFields)
             return
         }
         guard usernameTextInput.text != "" else {
-            showTextInputError(.emptyFields)
+            showTextInputError(RegisterErrors.emptyFields)
             return
         }
         guard nameTextInput.text != "" else {
-            showTextInputError(.emptyFields)
+            showTextInputError(RegisterErrors.emptyFields)
             return
         }
         guard passTextInput.text != "" else {
-            showTextInputError(.emptyFields)
+            showTextInputError(RegisterErrors.emptyFields)
             return
         }
         guard passTwoTextInput.text != "" else {
-            showTextInputError(.emptyFields)
+            showTextInputError(RegisterErrors.emptyFields)
             return
         }
         guard passTextInput.text == passTwoTextInput.text else {
-            showTextInputError(.incorrectPasswords)
+            showTextInputError(RegisterErrors.incorrectPasswords)
             return
         }
         guard passTextInput.text!.count >= 6 else {
-            showTextInputError(.invalidPasswords)
+            showTextInputError(RegisterErrors.invalidPasswords)
             return
         }
         progressIndicator.startAnimating()
         
         AuthManager.registerAccount(mail: mailTextInput.text!, password: passTextInput.text!, username: usernameTextInput.text!, fullName: nameTextInput.text!) { [weak self] (error) in
             if let error = error{
-                self?.showTextInputError(error.localizedDescription)
+                self?.showTextInputError(error)
                 self?.progressIndicator.stopAnimating()
                 return
             }
@@ -92,22 +82,14 @@ class RegisterViewController: UIViewController {
         
     }
  
+    private func showTextInputError(_ problem : Error){
+        
+        let ac = UIAlertController(title: "Ops", message: problem.localizedDescription, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Close", style: .destructive, handler: nil))
+        self.present(ac, animated: true, completion: nil)
+    }
+    
    
     
 }
 
-//MARK:- Error Dialogs
-extension RegisterViewController{
-    private func showTextInputError(_ problem : registerProblems){
-        
-        let ac = UIAlertController(title: "Ops", message: problem.rawValue, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Close", style: .destructive, handler: nil))
-        self.present(ac, animated: true, completion: nil)
-    }
-    
-    private func showTextInputError(_ problem : String){
-        let ac = UIAlertController(title: "Ops", message: problem, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Close", style: .destructive, handler: nil))
-        self.present(ac, animated: true, completion: nil)
-    }
-}

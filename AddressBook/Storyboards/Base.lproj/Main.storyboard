@@ -45,7 +45,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="goToMainVC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wfH-gu-AqP"/>
+                                            <action selector="loginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vZ0-ZG-0bs"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zfG-25-9Mi" customClass="LoginButton" customModule="AddressBook" customModuleProvider="target">
@@ -303,22 +303,22 @@
             <size key="intrinsicContentSize" width="57" height="30"/>
         </designable>
         <designable name="SKu-BA-9V0">
-            <size key="intrinsicContentSize" width="191.5" height="34"/>
+            <size key="intrinsicContentSize" width="211.5" height="34"/>
         </designable>
         <designable name="Wsy-Gi-Lhn">
-            <size key="intrinsicContentSize" width="128" height="34"/>
+            <size key="intrinsicContentSize" width="148" height="34"/>
         </designable>
         <designable name="Znj-bM-kIc">
-            <size key="intrinsicContentSize" width="104" height="34"/>
+            <size key="intrinsicContentSize" width="124" height="34"/>
         </designable>
         <designable name="ahK-kJ-euT">
-            <size key="intrinsicContentSize" width="128" height="34"/>
+            <size key="intrinsicContentSize" width="148" height="34"/>
         </designable>
         <designable name="cPa-t5-00P">
-            <size key="intrinsicContentSize" width="163.5" height="34"/>
+            <size key="intrinsicContentSize" width="183.5" height="34"/>
         </designable>
         <designable name="vTA-28-wUy">
-            <size key="intrinsicContentSize" width="191.5" height="34"/>
+            <size key="intrinsicContentSize" width="211.5" height="34"/>
         </designable>
         <designable name="vVs-vh-0rx">
             <size key="intrinsicContentSize" width="49" height="36"/>
@@ -327,11 +327,11 @@
             <size key="intrinsicContentSize" width="60" height="32"/>
         </designable>
         <designable name="zld-31-1rc">
-            <size key="intrinsicContentSize" width="169" height="34"/>
+            <size key="intrinsicContentSize" width="189" height="34"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="1a3-jb-NL4"/>
+        <segue reference="ODC-MM-tDb"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="LoginBackground" width="412" height="847"/>
