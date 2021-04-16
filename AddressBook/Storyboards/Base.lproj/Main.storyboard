@@ -267,17 +267,19 @@
                         <outlet property="passTwoTextInput" destination="ahK-kJ-euT" id="FxT-Jb-auz"/>
                         <outlet property="registerBtn" destination="9Cj-oZ-Upr" id="Ook-OT-vVn"/>
                         <outlet property="usernameTextInput" destination="zld-31-1rc" id="3u7-Do-q6E"/>
+                        <segue destination="0Ir-4R-8RB" kind="presentation" identifier="RegisterMainSegue" modalPresentationStyle="fullScreen" id="1a3-jb-NL4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xu9-dy-vTj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="559" y="560"/>
+            <point key="canvasLocation" x="591" y="648"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rOw-TX-J4w">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="0Ir-4R-8RB" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Dym-Sy-1Pd"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZeQ-kd-yjj">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -328,6 +330,9 @@
             <size key="intrinsicContentSize" width="169" height="34"/>
         </designable>
     </designables>
+    <inferredMetricsTieBreakers>
+        <segue reference="1a3-jb-NL4"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="LoginBackground" width="412" height="847"/>
         <systemColor name="systemBackgroundColor">

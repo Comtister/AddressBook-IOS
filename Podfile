@@ -8,5 +8,5 @@ target 'AddressBook' do
   # Pods for AddressBook
 
 	pod 'Firebase/Auth'
-
+	pod 'Firebase/Firestore'
 end

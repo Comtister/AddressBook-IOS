@@ -22,6 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         FirebaseApp.configure()
         
+        
         guard let _ = (scene as? UIWindowScene) else { return }
        
         
