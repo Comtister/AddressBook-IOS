@@ -21,7 +21,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         NetworkMonitor.shared.startMonitoring()
         
         FirebaseApp.configure()
-        
+       
+        if AuthManager.isOnline(){
+            let firstVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "MainMenu")
+            window?.rootViewController = firstVC
+        }else{
+            let firstVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "LoginVC")
+            window?.rootViewController = firstVC
+        }
         
         guard let _ = (scene as? UIWindowScene) else { return }
        

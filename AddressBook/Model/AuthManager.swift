@@ -29,6 +29,7 @@ class AuthManager {
                     completion(error)
                     return
                 }
+                setProfile(username: username, fullname: fullName, email: mail)
                 completion(nil)
             }
             
@@ -45,7 +46,84 @@ class AuthManager {
                 completion(nil,error)
                 return
             }
+            getProfileData(mail: email) { (profile, error) in
+                if let error = error{
+                    completion(nil,error)
+                    return
+                }
+                setProfile(profile: profile!)
+            }
             completion(resultData,nil)
+        }
+        
+    }
+    
+    //MARK:Offline profile process methods
+    static func isOnline() -> Bool{
+        
+        let userDef = UserDefaults.standard
+        
+        do {
+            if let profile = try userDef.getObject(forKey: "profile", castTo: Profile.self){
+                return true
+            }else{
+                return false
+            }
+        } catch {
+            return false
+        }
+        
+    
+    }
+    
+    private static func setProfile(profile : Profile){
+        let userDef = UserDefaults.standard
+        do{
+            try userDef.setObject(profile, forKey: "profile")
+        }catch{
+            
+        }
+        
+        //userDef.set(profile, forKey: "profile")
+        
+    }
+    
+    private static func setProfile(username : String , fullname : String , email : String){
+        let profile = Profile(username: username, fullname: fullname, email: email, online: true)
+        let userDef = UserDefaults.standard
+        
+        do {
+            try userDef.setObject(profile, forKey: "profile")
+        } catch {
+            
+        }
+        
+        //userDef.setValue(profile, forKey: "profile")
+        
+    }
+    
+    static func getProfile() -> Profile?{
+        
+        let userDef = UserDefaults.standard
+        
+        do {
+        let profile = try userDef.getObject(forKey: "profile", castTo: Profile.self)
+            return profile
+        } catch  {
+            return nil
+        }
+        
+    }
+    
+    static func closeProfile(completion : @escaping (Error?) -> Void){
+        UserDefaults.standard.removeObject(forKey: "profile")
+        
+        do{
+            try Auth.auth().signOut()
+            completion(nil)
+        
+        }catch{
+            completion(error)
         }
         
     }
@@ -80,7 +158,25 @@ class AuthManager {
        
     }
     
-   
+    private static func getProfileData(mail : String, completion : @escaping (Profile?,Error?) -> Void){
+        
+        db.collection("users").whereField("email", isEqualTo: mail).getDocuments { (snapshots, error) in
+            if let error = error{
+                completion(nil,error)
+                return
+            }
+            if let snapshot = snapshots{
+                print( snapshots?.documents[0].get("email"))
+                let document = snapshots?.documents[0]
+                let profile = Profile(username: document?.get("username") as! String, fullname: document?.get("fullname") as! String, email: document?.get("email") as! String, online: true)
+                completion(profile,nil)
+            }
+            
+           
+           
+        }
+        
+    }
     
     
 }

@@ -14,6 +14,7 @@ enum RegisterErrors : Error{
     case connectionProblem
     case databaseError
     case userAlreadyExists
+    case generalError
 }
 
 extension RegisterErrors : LocalizedError{
@@ -32,6 +33,8 @@ extension RegisterErrors : LocalizedError{
             return NSLocalizedString("an error has occurred", comment: "")
         case .userAlreadyExists:
             return NSLocalizedString("User already Exist", comment: "")
+        case .generalError:
+            return NSLocalizedString("an error has occurred", comment: "")
         
         }
     }
