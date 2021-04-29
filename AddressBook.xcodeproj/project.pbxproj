@@ -24,6 +24,9 @@
 		525FA3A9262867E200DC1CFC /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525FA3A8262867E200DC1CFC /* AuthManager.swift */; };
 		52796F4526153CFA009A1875 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52796F4426153CFA009A1875 /* LoginButton.swift */; };
 		5285CF712629FDFF0034C1BE /* RegisterErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285CF702629FDFF0034C1BE /* RegisterErrors.swift */; };
+		52BCA7FA2639A4E900D7A4E0 /* AddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BCA7F92639A4E900D7A4E0 /* AddressListViewController.swift */; };
+		52BCA7FD2639A67900D7A4E0 /* AddressListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BCA7FC2639A67900D7A4E0 /* AddressListTableViewCell.swift */; };
+		52BCA8002639AA7D00D7A4E0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BCA7FF2639AA7D00D7A4E0 /* MapViewController.swift */; };
 		BC69A68BEC9FE5297FA6140F /* Pods_AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 612A9761AEE086D3C0246029 /* Pods_AddressBook.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +52,9 @@
 		525FA3A8262867E200DC1CFC /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		52796F4426153CFA009A1875 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		5285CF702629FDFF0034C1BE /* RegisterErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterErrors.swift; sourceTree = "<group>"; };
+		52BCA7F92639A4E900D7A4E0 /* AddressListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListViewController.swift; sourceTree = "<group>"; };
+		52BCA7FC2639A67900D7A4E0 /* AddressListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListTableViewCell.swift; sourceTree = "<group>"; };
+		52BCA7FF2639AA7D00D7A4E0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		612A9761AEE086D3C0246029 /* Pods_AddressBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AddressBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -87,6 +93,7 @@
 				5252F62D2614AA660006F746 /* LoginField.swift */,
 				52796F4426153CFA009A1875 /* LoginButton.swift */,
 				5243B68D263368A5005E3878 /* ProfileTableViewCell.swift */,
+				52BCA7FC2639A67900D7A4E0 /* AddressListTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -97,6 +104,8 @@
 				520BC66A261DDAFB00B2F623 /* LoginViewController.swift */,
 				520BC66D261DDB0900B2F623 /* RegisterViewController.swift */,
 				5243B67426331A00005E3878 /* SettingsViewController.swift */,
+				52BCA7F92639A4E900D7A4E0 /* AddressListViewController.swift */,
+				52BCA7FF2639AA7D00D7A4E0 /* MapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -298,8 +307,11 @@
 				520BC66B261DDAFB00B2F623 /* LoginViewController.swift in Sources */,
 				5243B68E263368A5005E3878 /* ProfileTableViewCell.swift in Sources */,
 				5252F61B2614986B0006F746 /* SceneDelegate.swift in Sources */,
+				52BCA7FA2639A4E900D7A4E0 /* AddressListViewController.swift in Sources */,
+				52BCA7FD2639A67900D7A4E0 /* AddressListTableViewCell.swift in Sources */,
 				5285CF712629FDFF0034C1BE /* RegisterErrors.swift in Sources */,
 				5243B67526331A00005E3878 /* SettingsViewController.swift in Sources */,
+				52BCA8002639AA7D00D7A4E0 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
