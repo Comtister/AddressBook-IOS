@@ -11,8 +11,9 @@ import CoreLocation
 
 class MapViewController: UIViewController {
 
-    var locationManager : CLLocationManager = CLLocationManager()
+    let locationManager : CLLocationManager = CLLocationManager()
     var mapView : MKMapView?
+    var mapGesture : UILongPressGestureRecognizer?
     
     override func loadView() {
         let mapview = MKMapView()
@@ -34,7 +35,10 @@ class MapViewController: UIViewController {
         mapView?.delegate = self
         mapView?.showsUserLocation = true
         mapView?.userTrackingMode = .follow
-        
+        mapGesture = UILongPressGestureRecognizer(target: self, action: #selector(mapTap(_:)))
+        mapGesture?.delegate = self
+        mapGesture?.minimumPressDuration = 2
+        mapView?.addGestureRecognizer(mapGesture!)
     }
     
     private func setLocationManager(){
@@ -73,13 +77,51 @@ class MapViewController: UIViewController {
     
     }
     
+    @objc func mapTap(_ gestureRecognizer : UILongPressGestureRecognizer){
+        
+        if gestureRecognizer.state == .began{
+            let location = gestureRecognizer.location(in: mapView)
+            let coordinate = mapView?.convert(location, toCoordinateFrom: mapView)
+            
+            showYerOrNoDialog(coordinate: coordinate!)
+            print(coordinate)
+            
+        }
+        
+       
+        
+    }
+    
+    private func showYerOrNoDialog(coordinate : CLLocationCoordinate2D){
+        let dialogVC = UIAlertController(title: "Attention", message: "are you sure you want to add the address?", preferredStyle: .alert)
+        dialogVC.addAction(UIAlertAction(title: "Yes", style: .default, handler: { [weak self] (alert) in
+            self?.performSegue(withIdentifier: "AddAddressSegue", sender: coordinate)
+        }))
+        dialogVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(dialogVC, animated: true, completion: nil)
+    }
    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let vc = segue.destination as? AddressSaveViewController{
+            vc.coordinate = sender as? CLLocationCoordinate2D
+        }
+        
+    }
+    
     private func showDialog(){
         
         let dialogVC = UIAlertController(title: "Ups", message: "To use the application, you must provide location permission , go to settings and allow location permission", preferredStyle: .alert)
         dialogVC.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
         self.present(dialogVC, animated: true, completion: nil)
     }
+    
+}
+
+extension MapViewController : UIGestureRecognizerDelegate{
+    
+  
+    
     
 }
 
@@ -90,6 +132,8 @@ extension MapViewController : CLLocationManagerDelegate{
       print("burda burda")
         
     }
+    
+   
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         

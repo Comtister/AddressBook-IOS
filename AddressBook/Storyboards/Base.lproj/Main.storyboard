@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -186,10 +187,99 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="cdt-4C-Kvo"/>
+                    <connections>
+                        <segue destination="4ah-W6-idG" kind="showDetail" identifier="AddAddressSegue" id="HtP-Cc-pmP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rdP-2O-gXi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2378" y="602"/>
+            <point key="canvasLocation" x="2377" y="598"/>
+        </scene>
+        <!--Address Save View Controller-->
+        <scene sceneID="aDh-aW-7tq">
+            <objects>
+                <viewController id="4ah-W6-idG" customClass="AddressSaveViewController" customModule="AddressBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="stQ-q7-S8U">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="E7q-U6-0rw">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="266.5"/>
+                            </mapView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UMf-q5-XWH">
+                                <rect key="frame" x="0.0" y="266.5" width="414" height="541.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address Properties" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ae0-hL-mvY">
+                                        <rect key="frame" x="109" y="8" width="196" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7C8-w7-q47">
+                                        <rect key="frame" x="103.5" y="88.5" width="207" height="189.5"/>
+                                        <state key="normal">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="setPhoto:" destination="4ah-W6-idG" eventType="touchUpInside" id="BRj-gu-XRB"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J8R-MZ-MhP">
+                                        <rect key="frame" x="20.5" y="329" width="373" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z1k-m4-kXD">
+                                        <rect key="frame" x="20.5" y="414.5" width="373" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95W-Op-UIe">
+                                        <rect key="frame" x="20.5" y="499.5" width="373" height="34"/>
+                                        <color key="backgroundColor" name="PrimaryColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Save Address">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="7C8-w7-q47" firstAttribute="height" secondItem="UMf-q5-XWH" secondAttribute="height" multiplier="0.35" id="5KQ-L0-gVX"/>
+                                    <constraint firstItem="95W-Op-UIe" firstAttribute="height" secondItem="z1k-m4-kXD" secondAttribute="height" id="6E1-PK-udO"/>
+                                    <constraint firstItem="7C8-w7-q47" firstAttribute="width" secondItem="UMf-q5-XWH" secondAttribute="width" multiplier="0.5" id="AaW-lS-Tms"/>
+                                    <constraint firstItem="z1k-m4-kXD" firstAttribute="height" secondItem="J8R-MZ-MhP" secondAttribute="height" id="LPB-ZY-GoA"/>
+                                    <constraint firstItem="95W-Op-UIe" firstAttribute="width" secondItem="z1k-m4-kXD" secondAttribute="width" id="Ncl-Z0-6H8"/>
+                                    <constraint firstItem="J8R-MZ-MhP" firstAttribute="width" secondItem="UMf-q5-XWH" secondAttribute="width" multiplier="0.9" id="RVH-fx-aHV"/>
+                                    <constraint firstItem="z1k-m4-kXD" firstAttribute="width" secondItem="J8R-MZ-MhP" secondAttribute="width" id="ple-vi-H20"/>
+                                </constraints>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="w3I-Pv-isI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="E7q-U6-0rw" firstAttribute="trailing" secondItem="w3I-Pv-isI" secondAttribute="trailing" id="6oj-08-eRS"/>
+                            <constraint firstItem="w3I-Pv-isI" firstAttribute="bottom" secondItem="UMf-q5-XWH" secondAttribute="bottom" id="Fes-vT-pNU"/>
+                            <constraint firstItem="UMf-q5-XWH" firstAttribute="top" secondItem="E7q-U6-0rw" secondAttribute="bottom" id="UtK-0Y-rkg"/>
+                            <constraint firstItem="UMf-q5-XWH" firstAttribute="trailing" secondItem="w3I-Pv-isI" secondAttribute="trailing" id="Xzf-jl-3C0"/>
+                            <constraint firstItem="E7q-U6-0rw" firstAttribute="top" secondItem="w3I-Pv-isI" secondAttribute="top" id="Ynh-mI-zlt"/>
+                            <constraint firstItem="UMf-q5-XWH" firstAttribute="leading" secondItem="w3I-Pv-isI" secondAttribute="leading" id="fSu-MH-zkG"/>
+                            <constraint firstItem="E7q-U6-0rw" firstAttribute="height" secondItem="w3I-Pv-isI" secondAttribute="height" multiplier="0.33" id="gN1-XE-GYp"/>
+                            <constraint firstItem="E7q-U6-0rw" firstAttribute="leading" secondItem="w3I-Pv-isI" secondAttribute="leading" id="rwP-eg-RGo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="dqa-kB-tAP"/>
+                    <connections>
+                        <outlet property="addressDescription" destination="z1k-m4-kXD" id="1zi-lI-jri"/>
+                        <outlet property="addressPhoto" destination="7C8-w7-q47" id="DZr-Yu-unE"/>
+                        <outlet property="addressTitle" destination="J8R-MZ-MhP" id="W3c-ne-eSl"/>
+                        <outlet property="mapview" destination="E7q-U6-0rw" id="kMW-Gh-9Br"/>
+                        <outlet property="saveBtn" destination="95W-Op-UIe" id="VBM-J7-fNM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FhE-t2-R4b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2376.811594202899" y="1366.7410714285713"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="99Z-Fv-Ach">
@@ -536,22 +626,22 @@
             <size key="intrinsicContentSize" width="57" height="30"/>
         </designable>
         <designable name="SKu-BA-9V0">
-            <size key="intrinsicContentSize" width="211.5" height="34"/>
+            <size key="intrinsicContentSize" width="191.5" height="34"/>
         </designable>
         <designable name="Wsy-Gi-Lhn">
-            <size key="intrinsicContentSize" width="148" height="34"/>
+            <size key="intrinsicContentSize" width="128" height="34"/>
         </designable>
         <designable name="Znj-bM-kIc">
-            <size key="intrinsicContentSize" width="124" height="34"/>
+            <size key="intrinsicContentSize" width="104" height="34"/>
         </designable>
         <designable name="ahK-kJ-euT">
-            <size key="intrinsicContentSize" width="148" height="34"/>
+            <size key="intrinsicContentSize" width="128" height="34"/>
         </designable>
         <designable name="cPa-t5-00P">
-            <size key="intrinsicContentSize" width="183.5" height="34"/>
+            <size key="intrinsicContentSize" width="163.5" height="34"/>
         </designable>
         <designable name="vTA-28-wUy">
-            <size key="intrinsicContentSize" width="211.5" height="34"/>
+            <size key="intrinsicContentSize" width="191.5" height="34"/>
         </designable>
         <designable name="vVs-vh-0rx">
             <size key="intrinsicContentSize" width="49" height="36"/>
@@ -560,7 +650,7 @@
             <size key="intrinsicContentSize" width="60" height="32"/>
         </designable>
         <designable name="zld-31-1rc">
-            <size key="intrinsicContentSize" width="189" height="34"/>
+            <size key="intrinsicContentSize" width="169" height="34"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
@@ -568,6 +658,9 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="LoginBackground" width="412" height="847"/>
+        <namedColor name="PrimaryColor">
+            <color red="0.070588235294117646" green="0.70980392156862748" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
