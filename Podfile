@@ -9,4 +9,7 @@ target 'AddressBook' do
 
 	pod 'Firebase/Auth'
 	pod 'Firebase/Firestore'
+	pod 'IQKeyboardManagerSwift', '6.3.0'
+	pod 'Firebase/Storage'
+	pod 'Kingfisher', '~> 6.0'
 end

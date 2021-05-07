@@ -54,18 +54,18 @@ class LoginViewController: UIViewController {
     @IBAction func loginAction(_ sender : UIButton){
         //Control Statements
         guard mailTextInput.text != "" else {
-            showError(error: RegisterErrors.emptyFields)
+            Alerts.showErrorDialog(VC: self, titles: "Ops","Close", error: RegisterErrors.emptyFields)
             return
         }
         guard passTextInput.text != "" else {
-            showError(error: RegisterErrors.emptyFields)
+            Alerts.showErrorDialog(VC: self, titles: "Ops","Close", error: RegisterErrors.emptyFields)
             return
         }
         progressIndicator.startAnimating()
         AuthManager.loginAccount(email: mailTextInput.text!, password: passTextInput.text!) { [weak self] (resultData, error) in
             self?.progressIndicator.stopAnimating()
             if let error = error{
-                self?.showError(error: error)
+                Alerts.showErrorDialog(VC: self, titles: "Ops","Close", error: error)
                 return
             }
             self?.performSegue(withIdentifier: "MainSegue", sender: nil)
@@ -73,10 +73,6 @@ class LoginViewController: UIViewController {
         
     }
     
-    private func showError(error : Error){
-        let ac = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Close", style: .destructive, handler: nil))
-        self.present(ac, animated: true, completion: nil)
-    }
+
 
 }

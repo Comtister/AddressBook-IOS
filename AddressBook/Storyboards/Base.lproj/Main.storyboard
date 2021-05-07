@@ -217,7 +217,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7C8-w7-q47">
                                         <rect key="frame" x="103.5" y="88.5" width="207" height="189.5"/>
-                                        <state key="normal">
+                                        <state key="normal" image="PhotoButtunIcon">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
                                         <connections>
@@ -241,6 +241,9 @@
                                         <state key="normal" title="Save Address">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="saveAddress" destination="4ah-W6-idG" eventType="touchUpInside" id="uwA-1q-gfa"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -275,9 +278,11 @@
                         <outlet property="addressTitle" destination="J8R-MZ-MhP" id="W3c-ne-eSl"/>
                         <outlet property="mapview" destination="E7q-U6-0rw" id="kMW-Gh-9Br"/>
                         <outlet property="saveBtn" destination="95W-Op-UIe" id="VBM-J7-fNM"/>
+                        <segue destination="Jac-K4-kOL" kind="unwind" identifier="goBackAddressList" unwindAction="unwind:" id="4rq-6b-PXW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FhE-t2-R4b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Jac-K4-kOL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2376.811594202899" y="1366.7410714285713"/>
         </scene>
@@ -658,6 +663,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="LoginBackground" width="412" height="847"/>
+        <image name="PhotoButtunIcon" width="128" height="136"/>
         <namedColor name="PrimaryColor">
             <color red="0.070588235294117646" green="0.70980392156862748" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

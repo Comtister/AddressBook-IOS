@@ -23,6 +23,9 @@
 		525DF7B9261E613200B22E57 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525DF7B8261E613200B22E57 /* NetworkMonitor.swift */; };
 		525FA3A9262867E200DC1CFC /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525FA3A8262867E200DC1CFC /* AuthManager.swift */; };
 		52796F4526153CFA009A1875 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52796F4426153CFA009A1875 /* LoginButton.swift */; };
+		5281105F264338140095AB59 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5281105E264338140095AB59 /* DatabaseManager.swift */; };
+		52811062264339A40095AB59 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52811061264339A40095AB59 /* Address.swift */; };
+		52811065264351B60095AB59 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52811064264351B60095AB59 /* Alerts.swift */; };
 		5285CF712629FDFF0034C1BE /* RegisterErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285CF702629FDFF0034C1BE /* RegisterErrors.swift */; };
 		52BC84C5263C791A002DA59C /* AddressSaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BC84C4263C791A002DA59C /* AddressSaveViewController.swift */; };
 		52BCA7FA2639A4E900D7A4E0 /* AddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BCA7F92639A4E900D7A4E0 /* AddressListViewController.swift */; };
@@ -52,6 +55,9 @@
 		525DF7B8261E613200B22E57 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		525FA3A8262867E200DC1CFC /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		52796F4426153CFA009A1875 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		5281105E264338140095AB59 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		52811061264339A40095AB59 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		52811064264351B60095AB59 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		5285CF702629FDFF0034C1BE /* RegisterErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterErrors.swift; sourceTree = "<group>"; };
 		52BC84C4263C791A002DA59C /* AddressSaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSaveViewController.swift; sourceTree = "<group>"; };
 		52BCA7F92639A4E900D7A4E0 /* AddressListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +125,9 @@
 				525DF7B8261E613200B22E57 /* NetworkMonitor.swift */,
 				525FA3A8262867E200DC1CFC /* AuthManager.swift */,
 				521F74B12630652F00BD7728 /* Profile.swift */,
+				5281105E264338140095AB59 /* DatabaseManager.swift */,
+				52811061264339A40095AB59 /* Address.swift */,
+				52811064264351B60095AB59 /* Alerts.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -304,9 +313,12 @@
 				525FA3A9262867E200DC1CFC /* AuthManager.swift in Sources */,
 				5252F62E2614AA660006F746 /* LoginField.swift in Sources */,
 				52BC84C5263C791A002DA59C /* AddressSaveViewController.swift in Sources */,
+				52811062264339A40095AB59 /* Address.swift in Sources */,
+				52811065264351B60095AB59 /* Alerts.swift in Sources */,
 				521F74B62630F5E000BD7728 /* LogicExtensions.swift in Sources */,
 				5252F6192614986B0006F746 /* AppDelegate.swift in Sources */,
 				525DF7B9261E613200B22E57 /* NetworkMonitor.swift in Sources */,
+				5281105F264338140095AB59 /* DatabaseManager.swift in Sources */,
 				520BC66E261DDB0900B2F623 /* RegisterViewController.swift in Sources */,
 				520BC66B261DDAFB00B2F623 /* LoginViewController.swift in Sources */,
 				5243B68E263368A5005E3878 /* ProfileTableViewCell.swift in Sources */,
