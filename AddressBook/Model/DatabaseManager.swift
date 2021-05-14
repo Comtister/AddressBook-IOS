@@ -67,26 +67,33 @@ class DatabaseManager{
         
        
         db.collection("users").document(username).collection("addresses").addSnapshotListener {[weak self] (snapshot, error) in
-            print("kaç kez çalıştı")
+           
             if let error = error {
                 completion(nil,error)
                 return
             }
             
-            if let snapshot = snapshot{
+            if snapshot?.documents.count != 0{
+                
+                snapshot?.documentChanges.forEach { (difference) in
+                    if difference.type == .added{
+                        
+                        print("Burada")
+                        let address = Address(keyValue: difference.document.data())
+                        self?.getPhotos(address: address, completion: { (image) in
+                            address.photo = image
+                            completion(address,nil)
+                        })
+                    }
                     
-                for document in snapshot.documents{
-                    print("çalıştı aaa")
-                    print(document.data())
-                    
-                    let address = Address(keyValue: document.data())
-                    self?.getPhotos(address: address, completion: { (image) in
-                        address.photo = image
-                        completion(address,nil)
-                    })
+                    if difference.type == .removed{
+                        
+                    }
                 }
                 
-                
+                   
+            }else{
+                completion(nil,nil)
             }
             
             
@@ -99,18 +106,66 @@ class DatabaseManager{
         
         let resource = ImageResource(downloadURL: URL(string: address.getPhotoUrl())!)
         
-        KingfisherManager.shared.retrieveImage(with: resource) { (result) in
-           
-            do{
-                let image = try UIImage(cgImage: result.get().image.cgImage!)
-                completion(image)
-            }catch{
-                completion(nil)
-                return
+        let cache = ImageCache.default
+        cache.memoryStorage.config.totalCostLimit = 50 * 1024 * 1024
+        
+        
+        if ImageCache.default.isCached(forKey: address.getPhotoUrl()){
+            cache.retrieveImage(forKey: address.getPhotoUrl()) { (result) in
+                switch result{
+                case .success(let value):
+                    completion(UIImage(cgImage: (value.image?.cgImage)!))
+                    return
+                case .failure:
+                    completion(nil)
+                    return
+                }
             }
+        }else{
             
+            KingfisherManager.shared.retrieveImage(with: resource) { (result) in
+               
+                do{
+                    let image = try UIImage(cgImage: result.get().image.cgImage!)
+                    completion(image)
+                }catch{
+                    completion(nil)
+                    return
+                }
+                
+            }
         }
+        
+        
     }
     
+    func deleteAddress(){
+        
+    }
+    
+    func getUsers(searchText username : String , completion : @escaping ([User]?,Error?) -> Void){
+       
+        var datas : [User] = [User]()
+        
+        db.collection("users").whereField("username", isGreaterThanOrEqualTo: username).whereField("username", isLessThanOrEqualTo: username+"\u{f8ff}").getDocuments { (snapshots, error) in
+            if let error = error{
+                completion(nil,error)
+                return
+            }
+          
+            guard let snapshots = snapshots else {return}
+            
+            guard !snapshots.documents.isEmpty else {return}
+            
+            for document in snapshots.documents{
+                let user = User(data: document.data())
+                datas.append(user)
+            }
+            
+            completion(datas,nil)
+            
+        }
+        
+    }
     
 }
