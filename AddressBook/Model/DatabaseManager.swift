@@ -74,10 +74,10 @@ class DatabaseManager{
             }
             
             if snapshot?.documents.count != 0{
-                
+                print(snapshot?.documents.count)
                 snapshot?.documentChanges.forEach { (difference) in
                     if difference.type == .added{
-                        
+                        print(difference.document.data())
                         print("Burada")
                         let address = Address(keyValue: difference.document.data())
                         self?.getPhotos(address: address, completion: { (image) in
@@ -108,7 +108,7 @@ class DatabaseManager{
         
         let cache = ImageCache.default
         cache.memoryStorage.config.totalCostLimit = 50 * 1024 * 1024
-        
+        print(cache.diskStorage.directoryURL)
         
         if ImageCache.default.isCached(forKey: address.getPhotoUrl()){
             cache.retrieveImage(forKey: address.getPhotoUrl()) { (result) in
@@ -159,6 +159,9 @@ class DatabaseManager{
             
             for document in snapshots.documents{
                 let user = User(data: document.data())
+                if user.username == AuthManager.getProfile()?.username{
+                    return
+                }
                 datas.append(user)
             }
             
@@ -167,5 +170,159 @@ class DatabaseManager{
         }
         
     }
+    
+    func sendRequest(username : String , completion : @escaping (Error?) -> Void){
+        
+        db.collection("users").document(AuthManager.getProfile()!.username).collection("requestProfiles").addDocument(data: ["username" : username])
+        
+        db.collection("users").document(username).collection("requests").addDocument(data: ["username" : AuthManager.getProfile()!.username]) { (error) in
+            if let error = error{
+                completion(error)
+                return
+            }
+            
+            completion(nil)
+            
+        }
+        
+        
+    }
+    
+    func fetchRequest(username : String , completion : @escaping (Error?) -> Void){
+        
+        var users : [String] = [String]()
+        
+        db.collection("users").document(AuthManager.getProfile()!.username).collection("requests").addSnapshotListener { (snapshots, error) in
+            if let error = error{
+                completion(error)
+                return
+            }
+            
+            guard let documents = snapshots?.documents else {return}
+            
+            snapshots?.documentChanges.forEach({ (documentChange) in
+                
+                if documentChange.type == .added{
+                    Link.sharedLinks.links.append((documentChange.document.data()["username"] as! String))
+                }
+                
+                if documentChange.type == .removed{
+                    Link.sharedLinks.links.remove(at: Int(documentChange.oldIndex))
+                }
+                completion(nil)
+            })
+            
+        
+    }
+    }
+    
+    func compareRequest(username : String , completion : @escaping (Bool?,Error?) -> Void){
+        
+        db.collection("users").document(AuthManager.getProfile()!.username).collection("requestProfiles").whereField("username", isGreaterThanOrEqualTo: username).whereField("username", isLessThanOrEqualTo: username+"\u{f8ff}").getDocuments { (snapshots, error) in
+            
+            if let error = error{
+                completion(nil,error)
+                return
+            }
+            
+            guard let snapshots = snapshots else { completion(nil,error) ; return }
+            
+            if snapshots.documents.count > 0{
+                completion(true,nil)
+            }else{
+                completion(false,nil)
+            }
+            
+            
+        }
+        
+        
+    }
+    
+    func addUserSharedUsers(username : String , completion : @escaping (Error?) -> Void){
+        
+        db.collection("users").document(AuthManager.getProfile()!.username).collection("shared_users").addDocument(data: ["username" : username]) { [weak self] (error) in
+            
+            if let error = error{
+                completion(error)
+                return
+            }
+            
+            self?.db.collection("users").document(username).collection("shared_users").addDocument(data: ["username" : AuthManager.getProfile()!.username], completion: { (error) in
+                if let error = error{
+                    completion(error)
+                    return
+                }
+                self?.deleteRequestProfile(username: username) { [weak self] (error) in
+                    if let error = error{
+                        completion(error)
+                        return
+                    }
+                    
+                   
+                    completion(nil)
+                }
+                
+                
+                
+                
+            })
+            
+           
+         
+            
+            
+        }
+        
+        
+    }
+    
+    func deleteRequestProfile(username : String , completion : @escaping (Error?) -> Void){
+        db.collection("users").document(username).collection("requestProfiles").whereField("username", in: [AuthManager.getProfile()!.username]).getDocuments { [weak self] (snapshot, error) in
+            
+            if let error = error{
+                completion(error)
+                return
+            }
+            let doc = snapshot?.documents[0].documentID
+           
+            
+            self?.db.collection("users").document(username).collection("requestProfiles").document(doc!).delete { (error) in
+                if let error = error{
+                    completion(error)
+                    return
+                }
+               
+                
+                self?.db.collection("users").document(AuthManager.getProfile()!.username).collection("requests").whereField("username", in: [username]).getDocuments { (snapshots, error) in
+                    if let error = error{
+                        completion(error)
+                        return
+                    }
+                   
+                    let doc2 = snapshots?.documents[0].documentID
+                    
+                    self?.db.collection("users").document(AuthManager.getProfile()!.username).collection("requests").document(doc2!).delete(completion: { (error) in
+                        if let error = error{
+                            completion(error)
+                            return
+                        }
+                        completion(nil)
+                    })
+                    
+                    
+                }
+                
+                
+            }
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
     
 }

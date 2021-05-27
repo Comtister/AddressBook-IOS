@@ -19,7 +19,7 @@ class Alerts{
     
     public static func showErrorDialog(VC : UIViewController? , titles : String... , error : Error){
         let ac = UIAlertController(title: titles[0], message: error.localizedDescription, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: titles[1], style: .destructive, handler: nil))
+        //ac.addAction(UIAlertAction(title: titles[1], style: .destructive, handler: nil))
         VC?.present(ac, animated: true, completion: nil)
     }
     

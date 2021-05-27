@@ -20,6 +20,10 @@ class AddressListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+      
+        
+        setRequest()
+        
         progressIndicator.hidesWhenStopped = true
         
         addressList.delegate = self
@@ -27,19 +31,32 @@ class AddressListViewController: UIViewController {
         
     }
     
+    private func setRequest(){
+        DatabaseManager.shared.fetchRequest(username: AuthManager.getProfile()!.username) { [weak self] (error) in
+            if let error = error{
+                //Show error
+                return
+            }
+            
+            self?.tabBarController?.tabBar.items![3].badgeValue = (Link.sharedLinks.links.count > 0) ? String(Link.sharedLinks.links.count) : nil
+            
+        }
+    }
+    
     @IBAction func unwind(_ segue : UIStoryboardSegue){
         
     }
 
     override func viewDidAppear(_ animated: Bool) {
-       
+        print("çalıştı")
         if firstStart{
             addressList.isHidden = true
             progressIndicator.startAnimating()
             dbManager.getAddresses { [weak self] (addresses, error) in
                 if let error = error{
                     //Show Error Message
-                    Alerts.showErrorDialog(VC: self, titles: "Error", error: error)
+                    print(error.localizedDescription)
+                    Alerts.showErrorDialog(VC: self, titles: "Error","Ok", error: error)
                     self?.addressList.isHidden = false
                     self?.progressIndicator.stopAnimating()
                     self?.firstStart = false

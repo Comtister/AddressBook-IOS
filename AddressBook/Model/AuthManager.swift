@@ -52,8 +52,9 @@ class AuthManager {
                     return
                 }
                 setProfile(profile: profile!)
+                completion(resultData,nil)
             }
-            completion(resultData,nil)
+            
         }
         
     }

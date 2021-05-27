@@ -10,6 +10,7 @@ import UIKit
 class SettingsViewController: UITableViewController {
 
     @IBOutlet var profileCell : ProfileTableViewCell!
+    @IBOutlet var istekLbl : UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +23,20 @@ class SettingsViewController: UITableViewController {
        
     
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("test test")
+        if Link.sharedLinks.links.count > 0{
+            istekLbl.text?.append(" (\(Link.sharedLinks.links.count) Yeni Paylaşım İsteği)")
+        }else{
+            istekLbl.text = "Paylaşım istekleri"
+        }
+    }
    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath.section == 1 && indexPath.row == 1{
+        if indexPath.section == 1 && indexPath.row == 2{
             AuthManager.closeProfile { [weak self] (error) in
                 if let error = error{
                     
@@ -34,7 +44,13 @@ class SettingsViewController: UITableViewController {
                 }
                 self?.performSegue(withIdentifier: "GoToLoginScreen", sender: nil)
             }
-           
+            return
+        }
+        
+        if indexPath.section == 1 && indexPath.row == 1{
+            
+            self.performSegue(withIdentifier: "gotoShareRequests", sender: nil)
+            
         }
         
     }

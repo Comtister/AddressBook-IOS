@@ -32,6 +32,17 @@ class UserSearchViewController: UIViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let profileData = sender as? User else { print("Girdi Girdi") ; return }
+        
+        if let vc = segue.destination as? ProfileViewController{
+            vc.fullname = profileData.fullname
+            vc.mail = profileData.email
+            vc.username = profileData.username
+        }
+        
+    }
 
 }
 
@@ -51,6 +62,13 @@ extension UserSearchViewController : UITableViewDelegate , UITableViewDataSource
         
         
        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        performSegue(withIdentifier: "gotoProfileScreen", sender: datas[indexPath.row])
+        
     }
     
     

@@ -10,6 +10,8 @@
 		520BC66B261DDAFB00B2F623 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520BC66A261DDAFB00B2F623 /* LoginViewController.swift */; };
 		520BC66E261DDB0900B2F623 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520BC66D261DDB0900B2F623 /* RegisterViewController.swift */; };
 		521D2CCF261F4B8A0019C258 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 521D2CCE261F4B8A0019C258 /* GoogleService-Info.plist */; };
+		521D60B8265EDB8A006B41EB /* ShareRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521D60B7265EDB8A006B41EB /* ShareRequestTableViewCell.swift */; };
+		521D60BB265EDC2E006B41EB /* ShareRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521D60BA265EDC2E006B41EB /* ShareRequestViewController.swift */; };
 		521F74B22630652F00BD7728 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F74B12630652F00BD7728 /* Profile.swift */; };
 		521F74B62630F5E000BD7728 /* LogicExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F74B52630F5E000BD7728 /* LogicExtensions.swift */; };
 		5243B67526331A00005E3878 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5243B67426331A00005E3878 /* SettingsViewController.swift */; };
@@ -29,6 +31,8 @@
 		5285CF712629FDFF0034C1BE /* RegisterErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285CF702629FDFF0034C1BE /* RegisterErrors.swift */; };
 		52A29BAA264EA98500EAE926 /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A29BA9264EA98500EAE926 /* UserSearchViewController.swift */; };
 		52A29BAD264EC01500EAE926 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A29BAC264EC01500EAE926 /* User.swift */; };
+		52A35BC0265937000004ECAE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A35BBF265937000004ECAE /* ProfileViewController.swift */; };
+		52A35BC326599CE50004ECAE /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A35BC226599CE50004ECAE /* Link.swift */; };
 		52BC84C5263C791A002DA59C /* AddressSaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BC84C4263C791A002DA59C /* AddressSaveViewController.swift */; };
 		52BCA7FA2639A4E900D7A4E0 /* AddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BCA7F92639A4E900D7A4E0 /* AddressListViewController.swift */; };
 		52BCA7FD2639A67900D7A4E0 /* AddressListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BCA7FC2639A67900D7A4E0 /* AddressListTableViewCell.swift */; };
@@ -42,6 +46,8 @@
 		520BC66A261DDAFB00B2F623 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		520BC66D261DDB0900B2F623 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		521D2CCE261F4B8A0019C258 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		521D60B7265EDB8A006B41EB /* ShareRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareRequestTableViewCell.swift; sourceTree = "<group>"; };
+		521D60BA265EDC2E006B41EB /* ShareRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareRequestViewController.swift; sourceTree = "<group>"; };
 		521F74B12630652F00BD7728 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		521F74B52630F5E000BD7728 /* LogicExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicExtensions.swift; sourceTree = "<group>"; };
 		5243B67426331A00005E3878 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +69,8 @@
 		5285CF702629FDFF0034C1BE /* RegisterErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterErrors.swift; sourceTree = "<group>"; };
 		52A29BA9264EA98500EAE926 /* UserSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
 		52A29BAC264EC01500EAE926 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		52A35BBF265937000004ECAE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		52A35BC226599CE50004ECAE /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		52BC84C4263C791A002DA59C /* AddressSaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSaveViewController.swift; sourceTree = "<group>"; };
 		52BCA7F92639A4E900D7A4E0 /* AddressListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListViewController.swift; sourceTree = "<group>"; };
 		52BCA7FC2639A67900D7A4E0 /* AddressListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListTableViewCell.swift; sourceTree = "<group>"; };
@@ -106,6 +114,7 @@
 				52796F4426153CFA009A1875 /* LoginButton.swift */,
 				5243B68D263368A5005E3878 /* ProfileTableViewCell.swift */,
 				52BCA7FC2639A67900D7A4E0 /* AddressListTableViewCell.swift */,
+				521D60B7265EDB8A006B41EB /* ShareRequestTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -120,6 +129,8 @@
 				52BCA7FF2639AA7D00D7A4E0 /* MapViewController.swift */,
 				52BC84C4263C791A002DA59C /* AddressSaveViewController.swift */,
 				52A29BA9264EA98500EAE926 /* UserSearchViewController.swift */,
+				52A35BBF265937000004ECAE /* ProfileViewController.swift */,
+				521D60BA265EDC2E006B41EB /* ShareRequestViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -134,6 +145,7 @@
 				52811061264339A40095AB59 /* Address.swift */,
 				52811064264351B60095AB59 /* Alerts.swift */,
 				52A29BAC264EC01500EAE926 /* User.swift */,
+				52A35BC226599CE50004ECAE /* Link.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -317,8 +329,10 @@
 				52796F4526153CFA009A1875 /* LoginButton.swift in Sources */,
 				521F74B22630652F00BD7728 /* Profile.swift in Sources */,
 				525FA3A9262867E200DC1CFC /* AuthManager.swift in Sources */,
+				52A35BC326599CE50004ECAE /* Link.swift in Sources */,
 				5252F62E2614AA660006F746 /* LoginField.swift in Sources */,
 				52BC84C5263C791A002DA59C /* AddressSaveViewController.swift in Sources */,
+				521D60B8265EDB8A006B41EB /* ShareRequestTableViewCell.swift in Sources */,
 				52811062264339A40095AB59 /* Address.swift in Sources */,
 				52811065264351B60095AB59 /* Alerts.swift in Sources */,
 				521F74B62630F5E000BD7728 /* LogicExtensions.swift in Sources */,
@@ -329,8 +343,10 @@
 				520BC66E261DDB0900B2F623 /* RegisterViewController.swift in Sources */,
 				520BC66B261DDAFB00B2F623 /* LoginViewController.swift in Sources */,
 				5243B68E263368A5005E3878 /* ProfileTableViewCell.swift in Sources */,
+				52A35BC0265937000004ECAE /* ProfileViewController.swift in Sources */,
 				5252F61B2614986B0006F746 /* SceneDelegate.swift in Sources */,
 				52BCA7FA2639A4E900D7A4E0 /* AddressListViewController.swift in Sources */,
+				521D60BB265EDC2E006B41EB /* ShareRequestViewController.swift in Sources */,
 				52A29BAA264EA98500EAE926 /* UserSearchViewController.swift in Sources */,
 				52BCA7FD2639A67900D7A4E0 /* AddressListTableViewCell.swift in Sources */,
 				5285CF712629FDFF0034C1BE /* RegisterErrors.swift in Sources */,
