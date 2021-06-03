@@ -16,6 +16,7 @@
 		521F74B62630F5E000BD7728 /* LogicExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F74B52630F5E000BD7728 /* LogicExtensions.swift */; };
 		5243B67526331A00005E3878 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5243B67426331A00005E3878 /* SettingsViewController.swift */; };
 		5243B68E263368A5005E3878 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5243B68D263368A5005E3878 /* ProfileTableViewCell.swift */; };
+		52469D64266906C700156A89 /* RegisteredUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52469D63266906C700156A89 /* RegisteredUsersViewController.swift */; };
 		5252F6192614986B0006F746 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252F6182614986B0006F746 /* AppDelegate.swift */; };
 		5252F61B2614986B0006F746 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252F61A2614986B0006F746 /* SceneDelegate.swift */; };
 		5252F6202614986B0006F746 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5252F61E2614986B0006F746 /* Main.storyboard */; };
@@ -52,6 +53,7 @@
 		521F74B52630F5E000BD7728 /* LogicExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicExtensions.swift; sourceTree = "<group>"; };
 		5243B67426331A00005E3878 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5243B68D263368A5005E3878 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		52469D63266906C700156A89 /* RegisteredUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredUsersViewController.swift; sourceTree = "<group>"; };
 		5252F6152614986B0006F746 /* AddressBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AddressBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5252F6182614986B0006F746 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5252F61A2614986B0006F746 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				52A29BA9264EA98500EAE926 /* UserSearchViewController.swift */,
 				52A35BBF265937000004ECAE /* ProfileViewController.swift */,
 				521D60BA265EDC2E006B41EB /* ShareRequestViewController.swift */,
+				52469D63266906C700156A89 /* RegisteredUsersViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				52A35BC326599CE50004ECAE /* Link.swift in Sources */,
 				5252F62E2614AA660006F746 /* LoginField.swift in Sources */,
 				52BC84C5263C791A002DA59C /* AddressSaveViewController.swift in Sources */,
+				52469D64266906C700156A89 /* RegisteredUsersViewController.swift in Sources */,
 				521D60B8265EDB8A006B41EB /* ShareRequestTableViewCell.swift in Sources */,
 				52811062264339A40095AB59 /* Address.swift in Sources */,
 				52811065264351B60095AB59 /* Alerts.swift in Sources */,

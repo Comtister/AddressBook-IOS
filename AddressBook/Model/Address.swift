@@ -9,8 +9,9 @@ import Foundation
 import UIKit
 import MapKit
 
-class Address : Codable {
+class Address{
     
+    var id : String
     var title : String
     var desc : String
     private var _photo : Data?
@@ -20,7 +21,7 @@ class Address : Codable {
     var coordinate : CLLocationCoordinate2D
     private var photoURL : String?
     
-    init(title : String , desc : String , photo : UIImage , coordinate : CLLocationCoordinate2D) {
+    init(id : String , title : String , desc : String , photo : UIImage , coordinate : CLLocationCoordinate2D) {
         self.title = title
         self.desc = desc
         self.photo = photo
@@ -28,15 +29,17 @@ class Address : Codable {
         self._latitude = coordinate.latitude
         self._longitude = coordinate.longitude
         self.coordinate = CLLocationCoordinate2D(latitude: _latitude, longitude: _longitude)
+        self.id = id
     }
     
-    init(keyValue : [String : Any]) {
+    init(id : String , keyValue : [String : Any]) {
         self.title = keyValue["title"] as! String
         self.desc = keyValue["desc"] as! String
         self._latitude = keyValue["latitude"] as! Double
         self._longitude = keyValue["longitude"] as! Double
         self.coordinate = CLLocationCoordinate2D(latitude: _latitude, longitude: _longitude)
         self.photoURL = keyValue["photo_url"] as! String
+        self.id = id
     }
     
     enum CodingKeys : CodingKey{
@@ -60,7 +63,7 @@ class Address : Codable {
     func getPhotoData() -> Data{
         return _photo ?? Data()
     }
-    
+    /*
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(title, forKey: .title)
@@ -79,6 +82,6 @@ class Address : Codable {
         _latitude = try container.decode(Double.self, forKey: .latitude)
         _longitude = try container.decode(Double.self, forKey: .longitude)
         coordinate = CLLocationCoordinate2D(latitude: _latitude, longitude: _longitude)
-    }
+    }*/
     
 }

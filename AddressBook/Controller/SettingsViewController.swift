@@ -53,6 +53,10 @@ class SettingsViewController: UITableViewController {
             
         }
         
+        if indexPath.section == 1 && indexPath.row == 0{
+            self.performSegue(withIdentifier: "gotoRegistereds", sender: nil)
+        }
+        
     }
     
     private func showError(error : Error){

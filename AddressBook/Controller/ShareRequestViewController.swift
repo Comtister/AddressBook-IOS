@@ -72,5 +72,19 @@ extension ShareRequestViewController : UITableViewDataSource , UITableViewDelega
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, boolValue) in
+            boolValue(true)
+            
+            
+            
+        }
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [action])
+        return swipeActions
+        
+    }
+    
     
 }

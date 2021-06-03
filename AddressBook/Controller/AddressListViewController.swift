@@ -29,6 +29,7 @@ class AddressListViewController: UIViewController {
         addressList.delegate = self
         addressList.dataSource = self
         
+        
     }
     
     private func setRequest(){
@@ -148,6 +149,31 @@ extension AddressListViewController : UITableViewDelegate , UITableViewDataSourc
         performSegue(withIdentifier: "AddAddress", sender: ["Show",address])
     }
    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let contextItem = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, boolValue) in
+            boolValue(true)
+            print(indexPath.row)
+            DatabaseManager.shared.deleteAddress(id: (self?.datas[indexPath.row].id)!) { (error) in
+                if let error = error{
+                    //show error
+                    return
+                }
+                self?.datas.remove(at: indexPath.row)
+                self?.addressList.deleteRows(at: [indexPath], with: .left)
+            }
+        
+        }
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [contextItem])
+        return swipeActions
+    }
     
-}
+   
+    }
+    
+

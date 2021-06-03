@@ -644,6 +644,7 @@
                         <outlet property="profileCell" destination="O1X-kV-BMs" id="Mme-oe-Evs"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="GoToLoginScreen" modalPresentationStyle="fullScreen" id="1Yq-uj-V6e"/>
                         <segue destination="ujt-Gz-9bc" kind="show" identifier="gotoShareRequests" id="oi7-iF-VPn"/>
+                        <segue destination="vd9-gt-fiW" kind="show" identifier="gotoRegistereds" id="06b-7x-8Ph"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jho-1N-Fmh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -659,7 +660,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AyI-Ix-b0x">
-                                <rect key="frame" x="0.0" y="148.5" width="414" height="664.5"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ShareRequestCell" id="AwT-bF-W8r" customClass="ShareRequestTableViewCell" customModule="AddressBook" customModuleProvider="target">
@@ -731,7 +732,7 @@
                             <constraint firstItem="AyI-Ix-b0x" firstAttribute="top" secondItem="ApF-fg-EhO" secondAttribute="top" id="lMi-dS-1Ne"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Paylaşım İstekleri" id="eVG-g1-4jI"/>
+                    <navigationItem key="navigationItem" title="Paylaşım İstekleri" largeTitleDisplayMode="never" id="eVG-g1-4jI"/>
                     <connections>
                         <outlet property="requestsTableView" destination="AyI-Ix-b0x" id="xQb-4V-VDP"/>
                     </connections>
@@ -739,6 +740,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QQa-Fz-uTd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7550.7246376811599" y="729.91071428571422"/>
+        </scene>
+        <!--Registered Users View Controller-->
+        <scene sceneID="h91-al-pEG">
+            <objects>
+                <viewController id="vd9-gt-fiW" customClass="RegisteredUsersViewController" customModule="AddressBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e3u-Eb-7Lz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V2n-Mp-pJ9">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="8Z4-13-eFj" style="IBUITableViewCellStyleDefault" id="0ba-r2-SKy">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0ba-r2-SKy" id="jko-Ni-aeh">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Z4-13-eFj">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9TC-U4-o7b"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="V2n-Mp-pJ9" firstAttribute="bottom" secondItem="9TC-U4-o7b" secondAttribute="bottom" id="5ae-DJ-ofq"/>
+                            <constraint firstItem="V2n-Mp-pJ9" firstAttribute="leading" secondItem="9TC-U4-o7b" secondAttribute="leading" id="9kd-od-m6D"/>
+                            <constraint firstItem="V2n-Mp-pJ9" firstAttribute="trailing" secondItem="9TC-U4-o7b" secondAttribute="trailing" id="W8P-lS-3fF"/>
+                            <constraint firstItem="V2n-Mp-pJ9" firstAttribute="top" secondItem="9TC-U4-o7b" secondAttribute="top" id="rwe-EI-zsi"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="QRk-ly-lE9"/>
+                    <connections>
+                        <outlet property="tableView" destination="V2n-Mp-pJ9" id="tKT-He-MLt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="az0-vR-hM0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8518.8405797101459" y="729.91071428571422"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="SY0-0o-HrV">

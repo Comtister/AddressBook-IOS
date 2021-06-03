@@ -11,6 +11,10 @@ import Kingfisher
 
 class DatabaseManager{
     
+    enum relationshipStatus{
+        case noRelation , relation , requestReletion
+    }
+    
     static let shared : DatabaseManager = DatabaseManager()
     
     private var db : Firestore
@@ -44,7 +48,7 @@ class DatabaseManager{
                 }
                 
                 address.setPhotoUrl(path: url!.absoluteString)
-                self?.db.collection("users").document(username).collection("addresses").document(UUID().uuidString).setData(address.convertKeyValueArray()) { (error) in
+                self?.db.collection("users").document(username).collection("addresses").document(address.id).setData(address.convertKeyValueArray()) { (error) in
                     
                     if let _ = error{
                         completion(RegisterErrors.databaseError)
@@ -74,12 +78,10 @@ class DatabaseManager{
             }
             
             if snapshot?.documents.count != 0{
-                print(snapshot?.documents.count)
+                
                 snapshot?.documentChanges.forEach { (difference) in
                     if difference.type == .added{
-                        print(difference.document.data())
-                        print("Burada")
-                        let address = Address(keyValue: difference.document.data())
+                        let address = Address(id: difference.document.documentID , keyValue: difference.document.data())
                         self?.getPhotos(address: address, completion: { (image) in
                             address.photo = image
                             completion(address,nil)
@@ -139,7 +141,15 @@ class DatabaseManager{
         
     }
     
-    func deleteAddress(){
+    func deleteAddress(id : String , completion : @escaping (Error?) -> Void){
+        
+        db.collection("users").document(AuthManager.getProfile()!.username).collection("addresses").document(id).delete { (error) in
+            if let error = error{
+                completion(error)
+                return
+            }
+            completion(nil)
+        }
         
     }
     
@@ -216,7 +226,17 @@ class DatabaseManager{
     }
     }
     
-    func compareRequest(username : String , completion : @escaping (Bool?,Error?) -> Void){
+    func compareRequest(username : String , completion : @escaping (relationshipStatus?,Error?) -> Void){
+        
+        db.collection("users").document(AuthManager.getProfile()!.username).collection("shared_users").whereField("username", isGreaterThanOrEqualTo: username).whereField("username", isLessThanOrEqualTo: username+"\u{f8ff}").getDocuments { (snapshots, error) in
+            if let error = error{
+                completion(nil,error)
+                return
+            }
+            completion(.relation,nil)
+            return
+        }
+        
         
         db.collection("users").document(AuthManager.getProfile()!.username).collection("requestProfiles").whereField("username", isGreaterThanOrEqualTo: username).whereField("username", isLessThanOrEqualTo: username+"\u{f8ff}").getDocuments { (snapshots, error) in
             
@@ -228,9 +248,9 @@ class DatabaseManager{
             guard let snapshots = snapshots else { completion(nil,error) ; return }
             
             if snapshots.documents.count > 0{
-                completion(true,nil)
+                completion(.requestReletion,nil)
             }else{
-                completion(false,nil)
+                completion(.noRelation,nil)
             }
             
             
@@ -320,9 +340,32 @@ class DatabaseManager{
         
     }
     
+    func getSharedUsers( completion : @escaping ([String]?,Error?) -> Void){
+        
+        var users : [String] = [String]()
+        
+        db.collection("users").document(AuthManager.getProfile()!.username).collection("shared_users").getDocuments { (snapshots, error) in
+            if let error = error{
+                completion(nil,error)
+                return
+            }
+            
+            guard let snapshots = snapshots else { completion(nil,nil) ; return }
+            
+            for document in snapshots.documents{
+                let user = document.data()["username"] as! String
+                users.append(user)
+            }
+            completion(users,nil)
+        }
+        
+    }
     
-    
-    
+    func deleteSharedUser(username : String , completion : @escaping (Error?) -> Void){
+        
+       
+        
+    }
     
     
 }

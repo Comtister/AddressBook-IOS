@@ -27,6 +27,7 @@ class ProfileViewController: UIViewController {
         fullnameLbl.text = fullname
         mailLbl.text = mail
         
+        requestBtn.isHidden = true
         
         DatabaseManager.shared.compareRequest(username: username!) { [weak self] (state, error) in
             if let error = error{
@@ -34,10 +35,22 @@ class ProfileViewController: UIViewController {
                 return
             }
             guard let state = state else {return}
-            if state{
+            
+            switch state{
+            case .noRelation:
+                self?.requestBtn.isHidden = false
+                break
+            case .relation:
+                self?.requestBtn.isEnabled = false
+                self?.requestBtn.setTitle("Use Registered", for: .disabled)
+                self?.requestBtn.isHidden = false
+            case .requestReletion:
                 self?.requestBtn.isEnabled = false
                 self?.requestBtn.setTitle("Request Sent", for: .disabled)
+                self?.requestBtn.isHidden = false
             }
+            
+           
         }
         
     }
