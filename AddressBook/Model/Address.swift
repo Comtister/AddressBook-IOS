@@ -14,6 +14,7 @@ class Address{
     var id : String
     var title : String
     var desc : String
+    var owner : String?
     private var _photo : Data?
     var photo : UIImage?
     private var _latitude : Double
@@ -39,16 +40,19 @@ class Address{
         self._longitude = keyValue["longitude"] as! Double
         self.coordinate = CLLocationCoordinate2D(latitude: _latitude, longitude: _longitude)
         self.photoURL = keyValue["photo_url"] as! String
-        self.id = id
+        self.id = keyValue["id"] as! String
     }
     
-    enum CodingKeys : CodingKey{
-        case title , desc , photo , latitude , longitude
-    }
-    
+   
     func convertKeyValueArray() -> [String : Any]{
         
-        return ["title" : title , "desc" : desc , "latitude" : _latitude , "longitude" : _longitude , "photo_url" : photoURL ?? ""]
+        if let owner = owner{
+            return ["title" : title , "desc" : desc , "latitude" : _latitude , "longitude" : _longitude , "photo_url" : photoURL ?? "" , "id" : id , "owner" : owner]
+        }else{
+            return ["title" : title , "desc" : desc , "latitude" : _latitude , "longitude" : _longitude , "photo_url" : photoURL ?? "" , "id" : id]
+        }
+        
+        
         
     }
     
@@ -63,25 +67,6 @@ class Address{
     func getPhotoData() -> Data{
         return _photo ?? Data()
     }
-    /*
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(title, forKey: .title)
-        try container.encode(desc, forKey: .desc)
-        try container.encode(_photo, forKey: .photo)
-        try container.encode(_latitude, forKey: .latitude)
-        try container.encode(_longitude, forKey: .longitude)
-    }
     
-    required init(from decoder: Decoder) throws {
-        var container = try decoder.container(keyedBy: CodingKeys.self)
-        title = try container.decode(String.self, forKey: .title)
-        desc = try container.decode(String.self, forKey: .desc)
-        _photo = try container.decode(Data.self, forKey: .photo)
-        photo = UIImage(data: _photo ?? Data())!
-        _latitude = try container.decode(Double.self, forKey: .latitude)
-        _longitude = try container.decode(Double.self, forKey: .longitude)
-        coordinate = CLLocationCoordinate2D(latitude: _latitude, longitude: _longitude)
-    }*/
     
 }

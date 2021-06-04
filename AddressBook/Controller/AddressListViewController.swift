@@ -94,25 +94,36 @@ class AddressListViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        let sendarData = sender as? [Any]
-        let key = sendarData![0] as? String
-        
-        switch key {
-        case "Add":
-            if let VC = segue.destination as? MapViewController{
-                VC.segueKey = "Add"
+       
+        if let senderData = sender as? Address{
+           
+            if let VC = segue.destination as? AdressShareViewController{
+                VC.address = senderData
             }
-            break
-        case "Show":
-            if let VC = segue.destination as? MapViewController{
-                VC.segueKey = "Show"
-                VC.address = sendarData![1] as? Address
-            }
-            break
-        default:
-            break
+            return
         }
+        
+        if let sendarData = sender as? [Any]{
+            
+            let key = sendarData[0] as? String
+            
+            switch key {
+            case "Add":
+                if let VC = segue.destination as? MapViewController{
+                    VC.segueKey = "Add"
+                }
+                break
+            case "Show":
+                if let VC = segue.destination as? MapViewController{
+                    VC.segueKey = "Show"
+                    VC.address = sendarData[1] as? Address
+                }
+                break
+            default:
+                break
+            }
+        }
+     
         
        
         
@@ -155,9 +166,9 @@ extension AddressListViewController : UITableViewDelegate , UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let contextItem = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, boolValue) in
+        let contextDelete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, boolValue) in
             boolValue(true)
-            print(indexPath.row)
+           
             DatabaseManager.shared.deleteAddress(id: (self?.datas[indexPath.row].id)!) { (error) in
                 if let error = error{
                     //show error
@@ -169,7 +180,16 @@ extension AddressListViewController : UITableViewDelegate , UITableViewDataSourc
         
         }
         
-        let swipeActions = UISwipeActionsConfiguration(actions: [contextItem])
+        let contextShare = UIContextualAction(style: .normal, title: "Share") { [weak self] (action, view, boolValue) in
+            boolValue(true)
+            
+            self?.performSegue(withIdentifier: "ShareAddress", sender: self?.datas[indexPath.row])
+            
+        }
+        
+        contextShare.backgroundColor = UIColor(named: "PrimaryColor")
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [contextDelete,contextShare])
         return swipeActions
     }
     

@@ -14,7 +14,7 @@ class AuthManager {
     
     
     static func registerAccount(mail : String , password : String , username : String , fullName : String , completion : @escaping (Error?) -> Void){
-        
+        let profileID = UUID().uuidString
         db.collection("users").whereField("username", isEqualTo: username).getDocuments { (snapshots, error) in
             if let error = error{
                 completion(RegisterErrors.databaseError)
@@ -24,12 +24,12 @@ class AuthManager {
                 completion(RegisterErrors.userAlreadyExists)
                 return
             }
-            registerAction(mail: mail, username: username, fullname: fullName, password: password) { (error) in
+            registerAction(id: profileID, mail: mail, username: username, fullname: fullName, password: password) { (error) in
                 if let error = error{
                     completion(error)
                     return
                 }
-                setProfile(username: username, fullname: fullName, email: mail)
+                setProfile(id: profileID , username: username, fullname: fullName, email: mail)
                 completion(nil)
             }
             
@@ -89,8 +89,8 @@ class AuthManager {
         
     }
     
-    private static func setProfile(username : String , fullname : String , email : String){
-        let profile = Profile(username: username, fullname: fullname, email: email, online: true)
+    private static func setProfile(id : String , username : String , fullname : String , email : String){
+        let profile = Profile(id: id,username: username, fullname: fullname, email: email, online: true)
         let userDef = UserDefaults.standard
         
         do {
@@ -116,6 +116,19 @@ class AuthManager {
         
     }
     
+    static func getProfile() -> [String : Any]?{
+        let userDef = UserDefaults.standard
+        
+        do {
+        let profile = try userDef.getObject(forKey: "profile", castTo: Profile.self)
+           
+            return ["id" : profile!.id , "username" : profile!.username , "fullname" : profile!.fullname , "email" : profile!.email]
+            
+        } catch  {
+            return nil
+        }
+    }
+    
     static func closeProfile(completion : @escaping (Error?) -> Void){
         UserDefaults.standard.removeObject(forKey: "profile")
         
@@ -129,14 +142,14 @@ class AuthManager {
         
     }
     
-    private static func registerAction(mail : String , username : String , fullname : String , password : String , completion : @escaping (Error?) -> Void){
+    private static func registerAction(id : String , mail : String , username : String , fullname : String , password : String , completion : @escaping (Error?) -> Void){
         
         Auth.auth().createUser(withEmail: mail, password: password) { (result, error) in
             if let error = error{
                 completion(error)
                 return
             }
-            saveAccount(mail: mail, username: username, fullName: fullname) { (error) in
+            saveAccount(id: id , mail: mail, username: username, fullName: fullname) { (error) in
                 if let error = error{
                     completion(error)
                     return
@@ -147,9 +160,10 @@ class AuthManager {
         
     }
     
-    private static func saveAccount(mail : String , username : String , fullName : String , completion : @escaping (Error?) -> Void){
+    private static func saveAccount(id : String , mail : String , username : String , fullName : String , completion : @escaping (Error?) -> Void){
         
-        db.collection("users").document(username).setData(["email" : mail , "username" : username , "fullname" : fullName]) { (error) in
+        
+        db.collection("users").document(id).setData(["id" : id , "email" : mail , "username" : username , "fullname" : fullName]) { (error) in
             if let error = error{
                 completion(error)
                 return
@@ -169,7 +183,7 @@ class AuthManager {
             if let snapshot = snapshots{
                 print( snapshots?.documents[0].get("email"))
                 let document = snapshots?.documents[0]
-                let profile = Profile(username: document?.get("username") as! String, fullname: document?.get("fullname") as! String, email: document?.get("email") as! String, online: true)
+                let profile = Profile(id: document?.get("id") as! String,username: document?.get("username") as! String, fullname: document?.get("fullname") as! String, email: document?.get("email") as! String, online: true)
                 completion(profile,nil)
             }
             

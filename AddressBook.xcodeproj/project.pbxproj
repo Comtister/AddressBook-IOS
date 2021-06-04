@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5200575A266AC86C006E448B /* AdressShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52005759266AC86C006E448B /* AdressShareViewController.swift */; };
 		520BC66B261DDAFB00B2F623 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520BC66A261DDAFB00B2F623 /* LoginViewController.swift */; };
 		520BC66E261DDB0900B2F623 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520BC66D261DDB0900B2F623 /* RegisterViewController.swift */; };
 		521D2CCF261F4B8A0019C258 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 521D2CCE261F4B8A0019C258 /* GoogleService-Info.plist */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		1E6202F1E5C6A7A419197487 /* Pods-AddressBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AddressBook.debug.xcconfig"; path = "Target Support Files/Pods-AddressBook/Pods-AddressBook.debug.xcconfig"; sourceTree = "<group>"; };
 		33BDC7C50128988A83C30AE7 /* Pods-AddressBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AddressBook.release.xcconfig"; path = "Target Support Files/Pods-AddressBook/Pods-AddressBook.release.xcconfig"; sourceTree = "<group>"; };
+		52005759266AC86C006E448B /* AdressShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressShareViewController.swift; sourceTree = "<group>"; };
 		520BC66A261DDAFB00B2F623 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		520BC66D261DDB0900B2F623 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		521D2CCE261F4B8A0019C258 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				52A35BBF265937000004ECAE /* ProfileViewController.swift */,
 				521D60BA265EDC2E006B41EB /* ShareRequestViewController.swift */,
 				52469D63266906C700156A89 /* RegisteredUsersViewController.swift */,
+				52005759266AC86C006E448B /* AdressShareViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				5252F6192614986B0006F746 /* AppDelegate.swift in Sources */,
 				525DF7B9261E613200B22E57 /* NetworkMonitor.swift in Sources */,
 				52A29BAD264EC01500EAE926 /* User.swift in Sources */,
+				5200575A266AC86C006E448B /* AdressShareViewController.swift in Sources */,
 				5281105F264338140095AB59 /* DatabaseManager.swift in Sources */,
 				520BC66E261DDB0900B2F623 /* RegisterViewController.swift in Sources */,
 				520BC66B261DDAFB00B2F623 /* LoginViewController.swift in Sources */,

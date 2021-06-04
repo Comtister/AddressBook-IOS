@@ -12,7 +12,7 @@ class RegisteredUsersViewController: UIViewController {
     
     @IBOutlet var tableView : UITableView!
     
-    var users : [String] = [String]()
+    var users : [User] = [User]()
     
     let progressIndicator : UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
     
@@ -68,7 +68,7 @@ extension RegisteredUsersViewController : UITableViewDelegate , UITableViewDataS
         
         let cell = UITableViewCell()
         
-        cell.textLabel?.text = users[indexPath.row]
+        cell.textLabel?.text = users[indexPath.row].username
         
         return cell
         

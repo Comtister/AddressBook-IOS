@@ -16,7 +16,7 @@ class SettingsViewController: UITableViewController {
         super.viewDidLoad()
 
         
-        let profile = AuthManager.getProfile()
+        let profile : Profile? = AuthManager.getProfile()
         
         profileCell.nameLbl.text = profile?.username
         profileCell.mailLbl.text = profile?.email

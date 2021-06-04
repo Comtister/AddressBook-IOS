@@ -37,9 +37,7 @@ class UserSearchViewController: UIViewController {
         guard let profileData = sender as? User else { print("Girdi Girdi") ; return }
         
         if let vc = segue.destination as? ProfileViewController{
-            vc.fullname = profileData.fullname
-            vc.mail = profileData.email
-            vc.username = profileData.username
+            vc.user = profileData
         }
         
     }

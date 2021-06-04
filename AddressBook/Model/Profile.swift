@@ -9,7 +9,7 @@ import Foundation
 
 struct Profile : Codable {
     
-    
+    var id : String
     var username : String
     var fullname : String
     var email : String

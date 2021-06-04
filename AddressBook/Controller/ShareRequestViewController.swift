@@ -25,7 +25,7 @@ class ShareRequestViewController: UIViewController {
         let touchPoint = sender.convert(CGPoint.zero, to: self.requestsTableView)
         let buttonIndex = requestsTableView.indexPathForRow(at: touchPoint)
         
-        DatabaseManager.shared.addUserSharedUsers(username: Link.sharedLinks.links[buttonIndex!.row]) { [weak self] (error) in
+        DatabaseManager.shared.addUserSharedUsers(user: Link.sharedLinks.links[buttonIndex!.row]) { [weak self] (error) in
             if let error = error{
                 print(error)
             }
@@ -40,7 +40,7 @@ class ShareRequestViewController: UIViewController {
         let touchPoint = sender.convert(CGPoint.zero, to: self.requestsTableView)
         let buttonIndex = requestsTableView.indexPathForRow(at: touchPoint)
         
-        DatabaseManager.shared.deleteRequestProfile(username: Link.sharedLinks.links[buttonIndex!.row]) { [weak self] (error) in
+        DatabaseManager.shared.deleteRequestProfile(user: Link.sharedLinks.links[buttonIndex!.row]) { [weak self] (error) in
             if let error = error{
                 print(error)
             }
@@ -63,7 +63,7 @@ extension ShareRequestViewController : UITableViewDataSource , UITableViewDelega
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ShareRequestCell", for: indexPath) as? ShareRequestTableViewCell{
             
-            cell.usernameLbl.text = Link.sharedLinks.links[indexPath.row]
+            cell.usernameLbl.text = Link.sharedLinks.links[indexPath.row].username
             cell.positiveBtn.layer.cornerRadius = 5
             cell.negativeBtn.layer.cornerRadius = 5
             

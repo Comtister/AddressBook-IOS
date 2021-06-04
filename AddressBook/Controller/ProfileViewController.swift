@@ -16,20 +16,20 @@ class ProfileViewController: UIViewController {
     @IBOutlet var requestBtn : UIButton!
     
     var profilImage : UIImage?
-    var username : String?
-    var fullname : String?
-    var mail : String?
+    
+   
+    var user : User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        usernameLbl.text = username
-        fullnameLbl.text = fullname
-        mailLbl.text = mail
+        usernameLbl.text = user?.username
+        fullnameLbl.text = user?.fullname
+        mailLbl.text = user?.email
         
         requestBtn.isHidden = true
         
-        DatabaseManager.shared.compareRequest(username: username!) { [weak self] (state, error) in
+        DatabaseManager.shared.compareRequest(username: user!.username) { [weak self] (state, error) in
             if let error = error{
                 //Show error
                 return
@@ -59,7 +59,7 @@ class ProfileViewController: UIViewController {
 
     @IBAction func invite(_ sender : UIButton){
         
-        DatabaseManager.shared.sendRequest(username: username!) {[weak self] (error) in
+        DatabaseManager.shared.sendRequest(username: user!) {[weak self] (error) in
             if let error = error{
                 //show error
                 return

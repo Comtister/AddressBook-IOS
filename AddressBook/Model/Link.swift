@@ -11,7 +11,12 @@ class Link {
     
     static let sharedLinks : Link = Link()
     
-    var links : [String] = [String]()
+    var links : [User] = [User]()
+    
+    func appendUserFromData(data : [String : Any]){
+        let user = User(data: data)
+        links.append(user)
+    }
     
     private init(){
         

@@ -28,9 +28,8 @@ class DatabaseManager{
     
     func saveAddress(address : Address , completion : @escaping (Error?) -> Void){
     
-        guard let username = AuthManager.getProfile()?.username else { completion(RegisterErrors.connectionProblem) ; return }
             
-        let storageReference = storage.reference(withPath: "users").child(username).child("address_photos/\(address.title)")
+        let storageReference = storage.reference(withPath: "users").child(AuthManager.getProfile()!.id).child("address_photos/\(address.title)")
         
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
@@ -48,7 +47,7 @@ class DatabaseManager{
                 }
                 
                 address.setPhotoUrl(path: url!.absoluteString)
-                self?.db.collection("users").document(username).collection("addresses").document(address.id).setData(address.convertKeyValueArray()) { (error) in
+                self?.db.collection("users").document(AuthManager.getProfile()!.id).collection("addresses").document(address.id).setData(address.convertKeyValueArray()) { (error) in
                     
                     if let _ = error{
                         completion(RegisterErrors.databaseError)
@@ -65,12 +64,11 @@ class DatabaseManager{
             
     }
     
+    
     func getAddresses(completion : @escaping (Address? , Error?) -> Void){
         
-        guard let username = AuthManager.getProfile()?.username else { completion(nil,RegisterErrors.connectionProblem) ; return }
-        
        
-        db.collection("users").document(username).collection("addresses").addSnapshotListener {[weak self] (snapshot, error) in
+        db.collection("users").document(AuthManager.getProfile()!.id).collection("addresses").addSnapshotListener {[weak self] (snapshot, error) in
            
             if let error = error {
                 completion(nil,error)
@@ -101,6 +99,20 @@ class DatabaseManager{
             
         
         }
+        
+    }
+    
+    func shareAddress(address : Address , toUser : User , completion : @escaping (Error?) -> Void){
+        var owner = AuthManager.getProfile()!.username
+        address.owner = owner
+        db.collection("users").document(toUser.id).collection("addresses").addDocument(data: address.convertKeyValueArray()) { (error) in
+            if let error = error{
+                completion(error)
+                return
+            }
+            completion(nil)
+        }
+        
         
     }
     
@@ -143,7 +155,7 @@ class DatabaseManager{
     
     func deleteAddress(id : String , completion : @escaping (Error?) -> Void){
         
-        db.collection("users").document(AuthManager.getProfile()!.username).collection("addresses").document(id).delete { (error) in
+        db.collection("users").document(AuthManager.getProfile()!.id).collection("addresses").document(id).delete { (error) in
             if let error = error{
                 completion(error)
                 return
@@ -181,11 +193,11 @@ class DatabaseManager{
         
     }
     
-    func sendRequest(username : String , completion : @escaping (Error?) -> Void){
+    func sendRequest(username : User , completion : @escaping (Error?) -> Void){
         
-        db.collection("users").document(AuthManager.getProfile()!.username).collection("requestProfiles").addDocument(data: ["username" : username])
+        db.collection("users").document(AuthManager.getProfile()!.id).collection("requestProfiles").addDocument(data: username.getDictionaryObject())
         
-        db.collection("users").document(username).collection("requests").addDocument(data: ["username" : AuthManager.getProfile()!.username]) { (error) in
+        db.collection("users").document(username.id).collection("requests").addDocument(data: AuthManager.getProfile()!) { (error) in
             if let error = error{
                 completion(error)
                 return
@@ -202,7 +214,7 @@ class DatabaseManager{
         
         var users : [String] = [String]()
         
-        db.collection("users").document(AuthManager.getProfile()!.username).collection("requests").addSnapshotListener { (snapshots, error) in
+        db.collection("users").document(AuthManager.getProfile()!.id).collection("requests").addSnapshotListener { (snapshots, error) in
             if let error = error{
                 completion(error)
                 return
@@ -213,7 +225,7 @@ class DatabaseManager{
             snapshots?.documentChanges.forEach({ (documentChange) in
                 
                 if documentChange.type == .added{
-                    Link.sharedLinks.links.append((documentChange.document.data()["username"] as! String))
+                    Link.sharedLinks.appendUserFromData(data: documentChange.document.data())
                 }
                 
                 if documentChange.type == .removed{
@@ -228,17 +240,24 @@ class DatabaseManager{
     
     func compareRequest(username : String , completion : @escaping (relationshipStatus?,Error?) -> Void){
         
-        db.collection("users").document(AuthManager.getProfile()!.username).collection("shared_users").whereField("username", isGreaterThanOrEqualTo: username).whereField("username", isLessThanOrEqualTo: username+"\u{f8ff}").getDocuments { (snapshots, error) in
+        db.collection("users").document(AuthManager.getProfile()!.id).collection("shared_users").whereField("username", isGreaterThanOrEqualTo: username).whereField("username", isLessThanOrEqualTo: username+"\u{f8ff}").getDocuments { (snapshots, error) in
             if let error = error{
                 completion(nil,error)
                 return
             }
-            completion(.relation,nil)
-            return
+            
+            guard let snapshots = snapshots else { completion(nil,error) ; return }
+            
+            if snapshots.documents.count > 0{
+                completion(.relation,nil)
+                return
+            }
+            
+            
         }
         
         
-        db.collection("users").document(AuthManager.getProfile()!.username).collection("requestProfiles").whereField("username", isGreaterThanOrEqualTo: username).whereField("username", isLessThanOrEqualTo: username+"\u{f8ff}").getDocuments { (snapshots, error) in
+        db.collection("users").document(AuthManager.getProfile()!.id).collection("requestProfiles").whereField("username", isGreaterThanOrEqualTo: username).whereField("username", isLessThanOrEqualTo: username+"\u{f8ff}").getDocuments { (snapshots, error) in
             
             if let error = error{
                 completion(nil,error)
@@ -259,21 +278,21 @@ class DatabaseManager{
         
     }
     
-    func addUserSharedUsers(username : String , completion : @escaping (Error?) -> Void){
+    func addUserSharedUsers(user : User , completion : @escaping (Error?) -> Void){
         
-        db.collection("users").document(AuthManager.getProfile()!.username).collection("shared_users").addDocument(data: ["username" : username]) { [weak self] (error) in
+        db.collection("users").document(AuthManager.getProfile()!.id).collection("shared_users").addDocument(data: user.getDictionaryObject()) { [weak self] (error) in
             
             if let error = error{
                 completion(error)
                 return
             }
             
-            self?.db.collection("users").document(username).collection("shared_users").addDocument(data: ["username" : AuthManager.getProfile()!.username], completion: { (error) in
+            self?.db.collection("users").document(user.id).collection("shared_users").addDocument(data: AuthManager.getProfile()!, completion: { (error) in
                 if let error = error{
                     completion(error)
                     return
                 }
-                self?.deleteRequestProfile(username: username) { [weak self] (error) in
+                self?.deleteRequestProfile(user: user) { [weak self] (error) in
                     if let error = error{
                         completion(error)
                         return
@@ -297,8 +316,8 @@ class DatabaseManager{
         
     }
     
-    func deleteRequestProfile(username : String , completion : @escaping (Error?) -> Void){
-        db.collection("users").document(username).collection("requestProfiles").whereField("username", in: [AuthManager.getProfile()!.username]).getDocuments { [weak self] (snapshot, error) in
+    func deleteRequestProfile(user : User , completion : @escaping (Error?) -> Void){
+        db.collection("users").document(user.id).collection("requestProfiles").whereField("id", in: [AuthManager.getProfile()!.id]).getDocuments { [weak self] (snapshot, error) in
             
             if let error = error{
                 completion(error)
@@ -307,14 +326,14 @@ class DatabaseManager{
             let doc = snapshot?.documents[0].documentID
            
             
-            self?.db.collection("users").document(username).collection("requestProfiles").document(doc!).delete { (error) in
+            self?.db.collection("users").document(user.id).collection("requestProfiles").document(doc!).delete { (error) in
                 if let error = error{
                     completion(error)
                     return
                 }
                
                 
-                self?.db.collection("users").document(AuthManager.getProfile()!.username).collection("requests").whereField("username", in: [username]).getDocuments { (snapshots, error) in
+                self?.db.collection("users").document(AuthManager.getProfile()!.id).collection("requests").whereField("id", in: [user.id]).getDocuments { (snapshots, error) in
                     if let error = error{
                         completion(error)
                         return
@@ -322,7 +341,7 @@ class DatabaseManager{
                    
                     let doc2 = snapshots?.documents[0].documentID
                     
-                    self?.db.collection("users").document(AuthManager.getProfile()!.username).collection("requests").document(doc2!).delete(completion: { (error) in
+                    self?.db.collection("users").document(AuthManager.getProfile()!.id).collection("requests").document(doc2!).delete(completion: { (error) in
                         if let error = error{
                             completion(error)
                             return
@@ -340,11 +359,11 @@ class DatabaseManager{
         
     }
     
-    func getSharedUsers( completion : @escaping ([String]?,Error?) -> Void){
+    func getSharedUsers( completion : @escaping ([User]?,Error?) -> Void){
         
-        var users : [String] = [String]()
+        var users : [User] = [User]()
         
-        db.collection("users").document(AuthManager.getProfile()!.username).collection("shared_users").getDocuments { (snapshots, error) in
+        db.collection("users").document(AuthManager.getProfile()!.id).collection("shared_users").getDocuments { (snapshots, error) in
             if let error = error{
                 completion(nil,error)
                 return
@@ -353,7 +372,7 @@ class DatabaseManager{
             guard let snapshots = snapshots else { completion(nil,nil) ; return }
             
             for document in snapshots.documents{
-                let user = document.data()["username"] as! String
+                let user = User(data: document.data())
                 users.append(user)
             }
             completion(users,nil)
