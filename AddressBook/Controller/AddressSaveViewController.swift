@@ -72,7 +72,7 @@ class AddressSaveViewController: UIViewController, UINavigationControllerDelegat
         
         let address = Address(id: UUID().uuidString, title: addressTitleData!, desc: addressDescData ?? "", photo: photo!, coordinate: coordinate)
         
-        DatabaseManager.shared.saveAddress(address: address) { [weak self] (error) in
+        AddressManager.shared.saveAddress(address: address) { [weak self] (error) in
             if let error = error{
                 
             }

@@ -70,7 +70,7 @@ class RegisterViewController: UIViewController {
         }
         progressIndicator.startAnimating()
         
-        AuthManager.registerAccount(mail: mailTextInput.text!, password: passTextInput.text!, username: usernameTextInput.text!, fullName: nameTextInput.text!) { [weak self] (error) in
+        AuthManager.shared.register(mail: mailTextInput.text!, password: passTextInput.text!, username: usernameTextInput.text!, fullName: nameTextInput.text!) { [weak self] (error) in
             if let error = error{
                 self?.showTextInputError(error)
                 self?.progressIndicator.stopAnimating()

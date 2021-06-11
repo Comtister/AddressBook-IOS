@@ -13,7 +13,6 @@
 		521D2CCF261F4B8A0019C258 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 521D2CCE261F4B8A0019C258 /* GoogleService-Info.plist */; };
 		521D60B8265EDB8A006B41EB /* ShareRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521D60B7265EDB8A006B41EB /* ShareRequestTableViewCell.swift */; };
 		521D60BB265EDC2E006B41EB /* ShareRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521D60BA265EDC2E006B41EB /* ShareRequestViewController.swift */; };
-		521F74B22630652F00BD7728 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F74B12630652F00BD7728 /* Profile.swift */; };
 		521F74B62630F5E000BD7728 /* LogicExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F74B52630F5E000BD7728 /* LogicExtensions.swift */; };
 		5243B67526331A00005E3878 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5243B67426331A00005E3878 /* SettingsViewController.swift */; };
 		5243B68E263368A5005E3878 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5243B68D263368A5005E3878 /* ProfileTableViewCell.swift */; };
@@ -31,6 +30,9 @@
 		52811062264339A40095AB59 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52811061264339A40095AB59 /* Address.swift */; };
 		52811065264351B60095AB59 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52811064264351B60095AB59 /* Alerts.swift */; };
 		5285CF712629FDFF0034C1BE /* RegisterErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285CF702629FDFF0034C1BE /* RegisterErrors.swift */; };
+		52872438267250A700FA0971 /* AddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52872437267250A700FA0971 /* AddressManager.swift */; };
+		5287243B2672555000FA0971 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5287243A2672555000FA0971 /* UserManager.swift */; };
+		528724422672D73900FA0971 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528724412672D73900FA0971 /* Strings.swift */; };
 		52A29BAA264EA98500EAE926 /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A29BA9264EA98500EAE926 /* UserSearchViewController.swift */; };
 		52A29BAD264EC01500EAE926 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A29BAC264EC01500EAE926 /* User.swift */; };
 		52A35BC0265937000004ECAE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A35BBF265937000004ECAE /* ProfileViewController.swift */; };
@@ -51,7 +53,6 @@
 		521D2CCE261F4B8A0019C258 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		521D60B7265EDB8A006B41EB /* ShareRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareRequestTableViewCell.swift; sourceTree = "<group>"; };
 		521D60BA265EDC2E006B41EB /* ShareRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareRequestViewController.swift; sourceTree = "<group>"; };
-		521F74B12630652F00BD7728 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		521F74B52630F5E000BD7728 /* LogicExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicExtensions.swift; sourceTree = "<group>"; };
 		5243B67426331A00005E3878 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5243B68D263368A5005E3878 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
@@ -71,6 +72,9 @@
 		52811061264339A40095AB59 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		52811064264351B60095AB59 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		5285CF702629FDFF0034C1BE /* RegisterErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterErrors.swift; sourceTree = "<group>"; };
+		52872437267250A700FA0971 /* AddressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressManager.swift; sourceTree = "<group>"; };
+		5287243A2672555000FA0971 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		528724412672D73900FA0971 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		52A29BA9264EA98500EAE926 /* UserSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
 		52A29BAC264EC01500EAE926 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		52A35BBF265937000004ECAE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -144,13 +148,11 @@
 		521D2CD3261F55EA0019C258 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5287243F267274A100FA0971 /* DatabaseManagers */,
+				5287243E2672749400FA0971 /* Data Models */,
 				525DF7B8261E613200B22E57 /* NetworkMonitor.swift */,
-				525FA3A8262867E200DC1CFC /* AuthManager.swift */,
-				521F74B12630652F00BD7728 /* Profile.swift */,
 				5281105E264338140095AB59 /* DatabaseManager.swift */,
-				52811061264339A40095AB59 /* Address.swift */,
 				52811064264351B60095AB59 /* Alerts.swift */,
-				52A29BAC264EC01500EAE926 /* User.swift */,
 				52A35BC226599CE50004ECAE /* Link.swift */,
 			);
 			path = Model;
@@ -213,8 +215,28 @@
 			isa = PBXGroup;
 			children = (
 				5285CF702629FDFF0034C1BE /* RegisterErrors.swift */,
+				528724412672D73900FA0971 /* Strings.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		5287243E2672749400FA0971 /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				52811061264339A40095AB59 /* Address.swift */,
+				52A29BAC264EC01500EAE926 /* User.swift */,
+			);
+			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		5287243F267274A100FA0971 /* DatabaseManagers */ = {
+			isa = PBXGroup;
+			children = (
+				525FA3A8262867E200DC1CFC /* AuthManager.swift */,
+				52872437267250A700FA0971 /* AddressManager.swift */,
+				5287243A2672555000FA0971 /* UserManager.swift */,
+			);
+			path = DatabaseManagers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,7 +355,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				52796F4526153CFA009A1875 /* LoginButton.swift in Sources */,
-				521F74B22630652F00BD7728 /* Profile.swift in Sources */,
 				525FA3A9262867E200DC1CFC /* AuthManager.swift in Sources */,
 				52A35BC326599CE50004ECAE /* Link.swift in Sources */,
 				5252F62E2614AA660006F746 /* LoginField.swift in Sources */,
@@ -350,9 +371,12 @@
 				5281105F264338140095AB59 /* DatabaseManager.swift in Sources */,
 				520BC66E261DDB0900B2F623 /* RegisterViewController.swift in Sources */,
 				520BC66B261DDAFB00B2F623 /* LoginViewController.swift in Sources */,
+				5287243B2672555000FA0971 /* UserManager.swift in Sources */,
 				5243B68E263368A5005E3878 /* ProfileTableViewCell.swift in Sources */,
 				52A35BC0265937000004ECAE /* ProfileViewController.swift in Sources */,
 				5252F61B2614986B0006F746 /* SceneDelegate.swift in Sources */,
+				52872438267250A700FA0971 /* AddressManager.swift in Sources */,
+				528724422672D73900FA0971 /* Strings.swift in Sources */,
 				52BCA7FA2639A4E900D7A4E0 /* AddressListViewController.swift in Sources */,
 				521D60BB265EDC2E006B41EB /* ShareRequestViewController.swift in Sources */,
 				52A29BAA264EA98500EAE926 /* UserSearchViewController.swift in Sources */,

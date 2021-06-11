@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User {
+struct User : Codable {
     
     var id : String
     var username : String
@@ -21,7 +21,14 @@ struct User {
         self.email = data["email"] as! String
     }
     
-    func getDictionaryObject() -> [String : Any]{
+    init(id: String,username: String, fullname: String, email: String){
+        self.id = id
+        self.username = username
+        self.fullname = fullname
+        self.email = email
+    }
+    
+    func toDictionary() -> [String : Any]{
         return ["id" : self.id , "username" : self.username , "fullname" : self.fullname , "email" : self.email]
     }
     

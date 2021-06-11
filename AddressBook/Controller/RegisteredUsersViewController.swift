@@ -40,7 +40,7 @@ class RegisteredUsersViewController: UIViewController {
     
     private func getRegistereds(){
         progressIndicator.startAnimating()
-        DatabaseManager.shared.getSharedUsers { [weak self] (usersData, error) in
+        UserManager.shared.getSharedUsers { [weak self] (usersData, error) in
             self?.progressIndicator.stopAnimating()
             if let error = error{
                 //show error

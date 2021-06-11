@@ -16,7 +16,7 @@ class SettingsViewController: UITableViewController {
         super.viewDidLoad()
 
         
-        let profile : Profile? = AuthManager.getProfile()
+        let profile : User? = AuthManager.shared.getProfile()
         
         profileCell.nameLbl.text = profile?.username
         profileCell.mailLbl.text = profile?.email
@@ -37,7 +37,7 @@ class SettingsViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section == 1 && indexPath.row == 2{
-            AuthManager.closeProfile { [weak self] (error) in
+            AuthManager.shared.closeProfile { [weak self] (error) in
                 if let error = error{
                     
                     return

@@ -29,7 +29,7 @@ class ProfileViewController: UIViewController {
         
         requestBtn.isHidden = true
         
-        DatabaseManager.shared.compareRequest(username: user!.username) { [weak self] (state, error) in
+        UserManager.shared.compareRequest(username: user!.username) { [weak self] (state, error) in
             if let error = error{
                 //Show error
                 return
@@ -59,7 +59,7 @@ class ProfileViewController: UIViewController {
 
     @IBAction func invite(_ sender : UIButton){
         
-        DatabaseManager.shared.sendRequest(username: user!) {[weak self] (error) in
+        UserManager.shared.sendRequest(user: user!) {[weak self] (error) in
             if let error = error{
                 //show error
                 return

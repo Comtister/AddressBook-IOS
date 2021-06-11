@@ -30,7 +30,7 @@ class AdressShareViewController: UIViewController {
     
     private func getUsers(){
         progressIndicator.startAnimating()
-        DatabaseManager.shared.getSharedUsers { [weak self] (users, error) in
+        UserManager.shared.getSharedUsers { [weak self] (users, error) in
             self?.progressIndicator.stopAnimating()
             if let error = error{
                 //show error
@@ -76,7 +76,7 @@ extension AdressShareViewController : UITableViewDelegate , UITableViewDataSourc
         
         tableView.deselectRow(at: indexPath, animated: true)
         progressIndicator.startAnimating()
-        DatabaseManager.shared.shareAddress(address: address!, toUser: registeredUsers[indexPath.row]) { [weak self] (error) in
+        AddressManager.shared.shareAddress(address: address!, toUser: registeredUsers[indexPath.row]) { [weak self] (error) in
             self?.progressIndicator.stopAnimating()
             if let error = error{
                 //show error

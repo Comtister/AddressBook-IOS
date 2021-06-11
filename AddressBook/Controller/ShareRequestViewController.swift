@@ -25,7 +25,7 @@ class ShareRequestViewController: UIViewController {
         let touchPoint = sender.convert(CGPoint.zero, to: self.requestsTableView)
         let buttonIndex = requestsTableView.indexPathForRow(at: touchPoint)
         
-        DatabaseManager.shared.addUserSharedUsers(user: Link.sharedLinks.links[buttonIndex!.row]) { [weak self] (error) in
+        UserManager.shared.addUserSharedUsers(user: Link.sharedLinks.links[buttonIndex!.row]) { [weak self] (error) in
             if let error = error{
                 print(error)
             }
@@ -40,7 +40,7 @@ class ShareRequestViewController: UIViewController {
         let touchPoint = sender.convert(CGPoint.zero, to: self.requestsTableView)
         let buttonIndex = requestsTableView.indexPathForRow(at: touchPoint)
         
-        DatabaseManager.shared.deleteRequestProfile(user: Link.sharedLinks.links[buttonIndex!.row]) { [weak self] (error) in
+        UserManager.shared.deleteRequestProfile(user: Link.sharedLinks.links[buttonIndex!.row]) { [weak self] (error) in
             if let error = error{
                 print(error)
             }

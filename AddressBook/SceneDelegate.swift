@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         FirebaseApp.configure()
        
         
-        if AuthManager.isOnline(){
+        if AuthManager.shared.isOnline(){
             let firstVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "MainMenu")
             window?.rootViewController = firstVC
            

@@ -103,11 +103,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kuL-Lw-Fdq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="kuL-Lw-Fdq">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AdressListCell" id="G1c-lb-aje" customClass="AddressListTableViewCell" customModule="AddressBook" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="36.5"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="36.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G1c-lb-aje" id="opN-1i-EpH">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="36.5"/>
@@ -570,22 +571,6 @@
             </objects>
             <point key="canvasLocation" x="4092.753623188406" y="729.91071428571422"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="vOT-25-HxF">
-            <objects>
-                <viewController id="Ahm-e5-QM1" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8vh-nq-HcV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="ily-VT-l5g"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="q0f-qm-LdD"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ufh-Vd-rNg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5808.6956521739139" y="-100.44642857142857"/>
-        </scene>
         <!--Settings-->
         <scene sceneID="mAM-bP-x66">
             <objects>
@@ -704,7 +689,7 @@
                             <outlet property="delegate" destination="utC-Zs-Qam" id="IfW-KQ-hfh"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="dRI-x8-bJx"/>
+                    <tabBarItem key="tabBarItem" systemItem="mostRecent" id="dRI-x8-bJx"/>
                     <navigationItem key="navigationItem" title="Settings" id="QxO-cO-nuv"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -717,7 +702,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jho-1N-Fmh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7552.1739130434789" y="-100.44642857142857"/>
+            <point key="canvasLocation" x="5842" y="-100"/>
         </scene>
         <!--Paylaşım İstekleri-->
         <scene sceneID="iVF-59-c3r">
@@ -807,7 +792,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QQa-Fz-uTd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7550.7246376811599" y="729.91071428571422"/>
+            <point key="canvasLocation" x="5841" y="730"/>
         </scene>
         <!--Registered Users View Controller-->
         <scene sceneID="h91-al-pEG">
@@ -857,7 +842,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="az0-vR-hM0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8518.8405797101459" y="729.91071428571422"/>
+            <point key="canvasLocation" x="6809" y="730"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="SY0-0o-HrV">
@@ -973,7 +958,6 @@
                     <connections>
                         <segue destination="02A-b3-sP2" kind="relationship" relationship="viewControllers" id="jg4-lp-pbU"/>
                         <segue destination="a7B-xm-mTF" kind="relationship" relationship="viewControllers" id="oZ5-gC-9yB"/>
-                        <segue destination="bdR-MG-J8U" kind="relationship" relationship="viewControllers" id="Hcp-6y-9Yh"/>
                         <segue destination="LRe-kB-pwf" kind="relationship" relationship="viewControllers" id="z5h-NT-txj"/>
                     </connections>
                 </tabBarController>
@@ -988,7 +972,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="453-q1-VsB"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Z6P-dy-nYL">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -998,32 +982,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J7q-Y8-Qpf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6642.0289855072469" y="-100.44642857142857"/>
+            <point key="canvasLocation" x="4932" y="-100"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="My5-CK-Abe">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bdR-MG-J8U" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="dwT-nh-A7U"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bcu-uT-siE">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Ahm-e5-QM1" kind="relationship" relationship="rootViewController" id="RCm-hc-4mj"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rvv-la-NiF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4900" y="-100.44642857142857"/>
-        </scene>
-        <!--Item-->
         <scene sceneID="N7r-21-dZw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a7B-xm-mTF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="OaF-Hv-3X5"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="OaF-Hv-3X5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0bf-Sw-r5n">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -1038,11 +1003,11 @@
             </objects>
             <point key="canvasLocation" x="3184.057971014493" y="-100.44642857142857"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="gme-s3-CdF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="02A-b3-sP2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="4A5-38-54d"/>
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="4A5-38-54d"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="afB-nj-HUI">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -1063,22 +1028,22 @@
             <size key="intrinsicContentSize" width="57" height="30"/>
         </designable>
         <designable name="SKu-BA-9V0">
-            <size key="intrinsicContentSize" width="211.5" height="34"/>
+            <size key="intrinsicContentSize" width="191.5" height="34"/>
         </designable>
         <designable name="Wsy-Gi-Lhn">
-            <size key="intrinsicContentSize" width="148" height="34"/>
+            <size key="intrinsicContentSize" width="128" height="34"/>
         </designable>
         <designable name="Znj-bM-kIc">
-            <size key="intrinsicContentSize" width="124" height="34"/>
+            <size key="intrinsicContentSize" width="104" height="34"/>
         </designable>
         <designable name="ahK-kJ-euT">
-            <size key="intrinsicContentSize" width="148" height="34"/>
+            <size key="intrinsicContentSize" width="128" height="34"/>
         </designable>
         <designable name="cPa-t5-00P">
-            <size key="intrinsicContentSize" width="183.5" height="34"/>
+            <size key="intrinsicContentSize" width="163.5" height="34"/>
         </designable>
         <designable name="vTA-28-wUy">
-            <size key="intrinsicContentSize" width="211.5" height="34"/>
+            <size key="intrinsicContentSize" width="191.5" height="34"/>
         </designable>
         <designable name="vVs-vh-0rx">
             <size key="intrinsicContentSize" width="49" height="36"/>
@@ -1087,7 +1052,7 @@
             <size key="intrinsicContentSize" width="60" height="32"/>
         </designable>
         <designable name="zld-31-1rc">
-            <size key="intrinsicContentSize" width="189" height="34"/>
+            <size key="intrinsicContentSize" width="169" height="34"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>

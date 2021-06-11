@@ -1,172 +1,31 @@
 //
-//  DatabaseManager.swift
+//  UserManager.swift
 //  AddressBook
 //
-//  Created by Oguzhan Ozturk on 5.05.2021.
+//  Created by Oguzhan Ozturk on 10.06.2021.
 //
 
 import Foundation
 import Firebase
-import Kingfisher
 
-class DatabaseManager{
+class UserManager{
     
-    /*
     enum relationshipStatus{
         case noRelation , relation , requestReletion
-    }*/
-    /*
-    static let shared : DatabaseManager = DatabaseManager()
+    }
     
-    private(set) var db : Firestore
-    private(set) var storage : Storage
+    static let shared : UserManager = UserManager()
     
+    private var db : Firestore
+    private var storage : Storage
+   
     private init(){
         self.db = Firestore.firestore()
         self.storage = Storage.storage()
-    }*/
-    
-    /*
-    func saveAddress(address : Address , completion : @escaping (Error?) -> Void){
-        
-        let storageReference = storage.reference(withPath: "users").child(AuthManager.shared.getProfile()!.id).child("address_photos/\(address.title)")
-        
-        let metadata = StorageMetadata()
-        metadata.contentType = "image/jpeg"
-        
-        let uploadTask = storageReference.putData(address.getPhotoData(), metadata: metadata) { [weak self] (metaData, error) in
-            if let error = error{
-                completion(error)
-                return
-            }
-            
-            storageReference.downloadURL { (url, error) in
-                if let error = error{
-                    completion(error)
-                    return
-                }
-                
-                address.setPhotoUrl(path: url!.absoluteString)
-                self?.db.collection("users").document(AuthManager.shared.getProfile()!.id).collection("addresses").document(address.id).setData(address.convertKeyValueArray()) { (error) in
-                    
-                    if let _ = error{
-                        completion(RegisterErrors.databaseError)
-                        return
-                    }
-                    completion(nil)
-                }
-            }
-            
-        
-        }
-        
-        
-            
-    }
-    
-    
-    func getAddresses(completion : @escaping (Address? , Error?) -> Void){
-        
-       
-        db.collection("users").document(AuthManager.shared.getProfile()!.id).collection("addresses").addSnapshotListener {[weak self] (snapshot, error) in
-           
-            if let error = error {
-                completion(nil,error)
-                return
-            }
-            
-            if snapshot?.documents.count != 0{
-                
-                snapshot?.documentChanges.forEach { (difference) in
-                    if difference.type == .added{
-                        let address = Address(id: difference.document.documentID , keyValue: difference.document.data())
-                        self?.getPhotos(address: address, completion: { (image) in
-                            address.photo = image
-                            completion(address,nil)
-                        })
-                    }
-                    
-                    if difference.type == .removed{
-                        
-                    }
-                }
-                
-                   
-            }else{
-                completion(nil,nil)
-            }
-            
-            
-        
-        }
-        
-    }
-    
-    func shareAddress(address : Address , toUser : User , completion : @escaping (Error?) -> Void){
-        var owner = AuthManager.shared.getProfile()!.username
-        address.owner = owner
-        db.collection("users").document(toUser.id).collection("addresses").addDocument(data: address.convertKeyValueArray()) { (error) in
-            if let error = error{
-                completion(error)
-                return
-            }
-            completion(nil)
-        }
-        
-        
-    }
-    
-    private func getPhotos(address : Address , completion : @escaping (UIImage?) -> Void){
-        
-        let resource = ImageResource(downloadURL: URL(string: address.getPhotoUrl())!)
-        
-        let cache = ImageCache.default
-        cache.memoryStorage.config.totalCostLimit = 50 * 1024 * 1024
-        print(cache.diskStorage.directoryURL)
-        
-        if ImageCache.default.isCached(forKey: address.getPhotoUrl()){
-            cache.retrieveImage(forKey: address.getPhotoUrl()) { (result) in
-                switch result{
-                case .success(let value):
-                    completion(UIImage(cgImage: (value.image?.cgImage)!))
-                    return
-                case .failure:
-                    completion(nil)
-                    return
-                }
-            }
-        }else{
-            
-            KingfisherManager.shared.retrieveImage(with: resource) { (result) in
-               
-                do{
-                    let image = try UIImage(cgImage: result.get().image.cgImage!)
-                    completion(image)
-                }catch{
-                    completion(nil)
-                    return
-                }
-                
-            }
-        }
-        
-        
-    }
-    
-    func deleteAddress(id : String , completion : @escaping (Error?) -> Void){
-        
-        db.collection("users").document(AuthManager.shared.getProfile()!.id).collection("addresses").document(id).delete { (error) in
-            if let error = error{
-                completion(error)
-                return
-            }
-            completion(nil)
-        }
-        
     }
     
     func getUsers(searchText username : String , completion : @escaping ([User]?,Error?) -> Void){
-       
+        
         var datas : [User] = [User]()
         
         db.collection("users").whereField("username", isGreaterThanOrEqualTo: username).whereField("username", isLessThanOrEqualTo: username+"\u{f8ff}").getDocuments { (snapshots, error) in
@@ -193,11 +52,11 @@ class DatabaseManager{
         
     }
     
-    func sendRequest(username : User , completion : @escaping (Error?) -> Void){
+    func sendRequest(user : User , completion : @escaping (Error?) -> Void){
         
-        db.collection("users").document(AuthManager.shared.getProfile()!.id).collection("requestProfiles").addDocument(data: username.getDictionaryObject())
+        db.collection("users").document(AuthManager.shared.getProfile()!.id).collection("requestProfiles").addDocument(data: user.toDictionary())
         
-        db.collection("users").document(username.id).collection("requests").addDocument(data: AuthManager.shared.getProfile()!) { (error) in
+        db.collection("users").document(user.id).collection("requests").addDocument(data: AuthManager.shared.getProfile()!.toDictionary()) { (error) in
             if let error = error{
                 completion(error)
                 return
@@ -280,14 +139,14 @@ class DatabaseManager{
     
     func addUserSharedUsers(user : User , completion : @escaping (Error?) -> Void){
         
-        db.collection("users").document(AuthManager.shared.getProfile()!.id).collection("shared_users").addDocument(data: user.getDictionaryObject()) { [weak self] (error) in
+        db.collection("users").document(AuthManager.shared.getProfile()!.id).collection("shared_users").addDocument(data: user.toDictionary()) { [weak self] (error) in
             
             if let error = error{
                 completion(error)
                 return
             }
             
-            self?.db.collection("users").document(user.id).collection("shared_users").addDocument(data: AuthManager.shared.getProfile()!, completion: { (error) in
+            self?.db.collection("users").document(user.id).collection("shared_users").addDocument(data: AuthManager.shared.getProfile()!.toDictionary(), completion: { (error) in
                 if let error = error{
                     completion(error)
                     return
@@ -380,11 +239,12 @@ class DatabaseManager{
         
     }
     
-    func deleteSharedUser(username : String , completion : @escaping (Error?) -> Void){
+    func deleteUser(username : String , completion : @escaping (Error?) -> Void){
         
        
         
-    }*/
+    }
     
+   
     
 }

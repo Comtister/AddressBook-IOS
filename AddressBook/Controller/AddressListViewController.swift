@@ -13,7 +13,7 @@ class AddressListViewController: UIViewController {
     @IBOutlet var progressIndicator : UIActivityIndicatorView!
     @IBOutlet var barAddButton : UIBarButtonItem!
     
-    private let dbManager : DatabaseManager = DatabaseManager.shared
+    private let dbManager : AddressManager = AddressManager.shared
     private var datas : [Address]  = [Address]()
     private var firstStart : Bool = true
     
@@ -33,7 +33,7 @@ class AddressListViewController: UIViewController {
     }
     
     private func setRequest(){
-        DatabaseManager.shared.fetchRequest(username: AuthManager.getProfile()!.username) { [weak self] (error) in
+        UserManager.shared.fetchRequest(username: AuthManager.shared.getProfile()!.username) { [weak self] (error) in
             if let error = error{
                 //Show error
                 return
@@ -169,7 +169,7 @@ extension AddressListViewController : UITableViewDelegate , UITableViewDataSourc
         let contextDelete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, boolValue) in
             boolValue(true)
            
-            DatabaseManager.shared.deleteAddress(id: (self?.datas[indexPath.row].id)!) { (error) in
+            AddressManager.shared.deleteAddress(id: (self?.datas[indexPath.row].id)!) { (error) in
                 if let error = error{
                     //show error
                     return

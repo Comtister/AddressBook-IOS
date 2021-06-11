@@ -62,7 +62,7 @@ class LoginViewController: UIViewController {
             return
         }
         progressIndicator.startAnimating()
-        AuthManager.loginAccount(email: mailTextInput.text!, password: passTextInput.text!) { [weak self] (resultData, error) in
+        AuthManager.shared.login(email: mailTextInput.text!, password: passTextInput.text!) { [weak self] (resultData, error) in
             self?.progressIndicator.stopAnimating()
             if let error = error{
                 Alerts.showErrorDialog(VC: self, titles: "Ops","Close", error: error)

@@ -81,7 +81,7 @@ extension UserSearchViewController : UISearchBarDelegate{
         searchList.isHidden = false
         let lowText = searchText.lowercased()
         
-        DatabaseManager.shared.getUsers(searchText: lowText) { [weak self] (datas, error) in
+        UserManager.shared.getUsers(searchText: lowText) { [weak self] (datas, error) in
             if let error = error{
                 //show error
                 Alerts.showErrorDialog(VC: self, titles: "Error", error: error)
